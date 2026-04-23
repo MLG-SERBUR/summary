@@ -359,19 +359,18 @@
     <section class="hero">
       <div class="hero-grid">
         <div>
-          <div class="tag">Diary style story</div>
+          <div class="tag">Chronological diary</div>
           <h1>How the server came back to life</h1>
           <p>
-            This stretch felt like wandering room to room in an old house, turning lights back on, fixing broken doors,
-            and realizing every repair mattered. Some work was pure survival. Some was polish. Some was simply making
-            old magic feel alive again.
+            This is the order it happened. Not a dashboard. Not a brochure. Just the long run of fixes, pauses,
+            retries, and small wins that made the server feel alive again.
           </p>
         </div>
         <aside class="hero-note">
           <strong>45 repos</strong>
           <span>
-            Unique plugin repos showed action in the last week. The work was wide, but the story was also personal:
-            each fix had its own little fight.
+            Unique plugin repos showed action in the last week. The days jumped between build fixes, runtime fixes,
+            and the sort of tiny behavior bugs that only show up once everything else starts working.
           </span>
         </aside>
       </div>
@@ -380,13 +379,13 @@
     <section class="section panel">
       <h2>The shape of the week</h2>
       <div class="sub">
-        Same story, different rooms: first the platform, then the glue, then the features people actually notice.
+        Rough split of effort, because the diary has a pattern even when the days were messy.
       </div>
       <div class="story-grid">
         <div class="chart">
           <div class="chart-title">
             <strong>What kept showing up</strong>
-            <span>rough weight of work, not exact stopwatch time</span>
+            <span>rough weight, not stopwatch math</span>
           </div>
           <div class="bar-row">
             <label>Build / CI</label>
@@ -404,96 +403,163 @@
             <div>13</div>
           </div>
           <div class="quote">
-            The big pattern: lots of old plugins did not just need a compile fix.
+            The big pattern: old plugins did not just need compile fixes.
             They needed to remember how to behave in modern Minecraft.
           </div>
         </div>
         <div class="chart">
           <div class="chart-title">
-            <strong>How it felt</strong>
-            <span>the diary version</span>
+            <strong>What it felt like</strong>
+            <span>notepad version</span>
           </div>
           <div class="quote" style="margin-top:0;">
-            <strong>Some days:</strong> I spent all my energy on one plugin that looked almost fine, then turned out to have
-            one tiny assumption from years ago that no longer fit.
+            <strong>Some mornings:</strong> one plugin looked close, then one old assumption from years ago would break the whole thing.
           </div>
           <div class="quote">
-            <strong>Other days:</strong> The win was not flashy. It was a workflow, a config, or a test that made the
-            next update less fragile.
+            <strong>Other afternoons:</strong> the win was a workflow, a config, or a test that made the next update less fragile.
           </div>
         </div>
       </div>
     </section>
 
     <section class="section panel">
-      <h2>Diary entries by repo</h2>
+      <h2>Diary entries, in order</h2>
       <div class="sub">
-        Each entry below is the kind of thing you would write after a long day: what broke, what got fixed, and why it mattered.
+        Times are approximate and based on the commit trail. Gaps matter here. The work did not happen all at once.
       </div>
       <div class="timeline">
-        <article class="entry" id="pretty">
-          <div class="entry-date">PrettySimpleShop</div>
-          <h3>The shop finally felt right again</h3>
+        <article class="entry">
+          <div class="entry-date">Apr 14</div>
+          <h3>First pass on MountainDewritoes</h3>
           <p>
-            This one ate real time. The plugin did not just need a version bump. It needed item-name logic and fallback
-            fixes so shops would show the right thing again instead of silently drifting off into old assumptions.
+            Early evening, the plugin started losing old baggage. `GrandioseAPI` came out, player data moved local,
+            and the main plugin took over more of the logic.
+          </p>
+          <p>
+            A few hours later that simplification got revised because the main class was already too crowded. So the
+            player data code came back as a small wrapper around PDC storage. Less grand. More readable.
           </p>
           <div class="chips">
-            <span class="chip">Purpur 26.1.2</span>
-            <span class="chip">item-name fixes</span>
-            <span class="chip">behavior cleanup</span>
+            <span class="chip">dependency removal</span>
+            <span class="chip">PDC storage</span>
+            <span class="chip">main class too big</span>
+          </div>
+        </article>
+        <article class="entry">
+          <div class="entry-date">Apr 15</div>
+          <h3>The build stopped being polite</h3>
+          <p>
+            Late morning, the work shifted to build plumbing. Repository URLs were updated, then shade plugin trouble
+            forced Java back to 21 so the class files would stop fighting the toolchain.
+          </p>
+          <p>
+            A little later the updater got switched back on. The pattern was clear by then: if the build path is wrong,
+            the rest of the server story cannot move forward.
+          </p>
+          <div class="chips">
+            <span class="chip">repo URLs</span>
+            <span class="chip">Java 21</span>
+            <span class="chip">updater</span>
+          </div>
+        </article>
+        <article class="entry">
+          <div class="entry-date">Apr 17-18</div>
+          <h3>The org learned how to build itself again</h3>
+          <p>
+            Over that stretch, lots of repos got the same kind of treatment: new GitHub Actions workflows, old workflows
+            removed, Maven quieted down, and modern Paper/Purpur compatibility work spread through the stack.
+          </p>
+          <p>
+            This is where the work stopped feeling like one plugin rescue and started feeling like the whole ecosystem
+            was being pulled forward together.
+          </p>
+          <div class="chips">
+            <span class="chip">CI cleanup</span>
+            <span class="chip">Paper 26.1.2</span>
+            <span class="chip">workflow churn</span>
+          </div>
+        </article>
+        <article class="entry" id="pretty">
+          <div class="entry-date">Apr 19</div>
+          <h3>PrettySimpleShop finally told the truth about items</h3>
+          <p>
+            Afternoon into evening. First the item-name fallback chain got reordered. Then translated names were made
+            consistent. Then the shop code got the actual shop item name instead of the raw itemstack name.
+          </p>
+          <p>
+            That sounds tiny. It was not tiny. It was the kind of bug that only matters when the whole feature is wrong
+            in a subtle way.
+          </p>
+          <div class="chips">
+            <span class="chip">item-name fallback</span>
+            <span class="chip">translated names</span>
+            <span class="chip">shop behavior</span>
           </div>
         </article>
         <article class="entry" id="mountain">
-          <div class="entry-date">MountainDewritoes</div>
-          <h3>The glue plugin got real care</h3>
+          <div class="entry-date">Apr 20</div>
+          <h3>ItemNameLab turned into useful tooling</h3>
           <p>
-            This was server-specific plumbing, the sort of thing most players never see directly until it breaks.
-            Startup, config, and player-data storage got fixed so the server could trust its own memory again.
+            Morning. New test plugin. Then command arguments shifted. Then output became components. Then tests were
+            added for custom and translated names. That sequence matters because it shows the work maturing while it moved.
           </p>
-          <div class="chips">
-            <span class="chip">startup fixes</span>
-            <span class="chip">player data</span>
-            <span class="chip">dependency cleanup</span>
-          </div>
-        </article>
-        <article class="entry" id="creative">
-          <div class="entry-date">CreativeParkour</div>
-          <h3>Old minigame code survived the new world</h3>
           <p>
-            This work was about keeping a familiar game alive on modern server APIs. The code needed compatibility fixes
-            and build cleanup so it could keep being the same game without being trapped in the past.
-          </p>
-          <div class="chips">
-            <span class="chip">API updates</span>
-            <span class="chip">CI cleanup</span>
-            <span class="chip">modern builds</span>
-          </div>
-        </article>
-        <article class="entry">
-          <div class="entry-date">ItemNameLab</div>
-          <h3>The support tool got sharper</h3>
-          <p>
-            Not flashy, but useful. Tests, translated-name handling, and cleaner output behavior made item names easier to
-            trust, which helps the rest of the modernization story hold together.
+            The point was not to build a huge tool. The point was to make item-name behavior easier to trust everywhere else.
           </p>
           <div class="chips">
             <span class="chip">tests</span>
-            <span class="chip">translated names</span>
             <span class="chip">components</span>
+            <span class="chip">translated names</span>
           </div>
         </article>
         <article class="entry">
-          <div class="entry-date">Multiverse-Core</div>
-          <h3>One tool changed shape</h3>
+          <div class="entry-date">Apr 20</div>
+          <h3>MountainDewritoes had to choose between neat and real</h3>
           <p>
-            Updater logic had to follow the project where it actually went. The build shifted to Gradle, so the update script
-            had to learn the new route instead of following the old one.
+            Later that same day, the PDC split got reconsidered. The main class was getting huge, so the wrapper came back.
+            Then startup and config compatibility got trimmed down because the plugin had to load cleanly before anything
+            else mattered.
+          </p>
+          <p>
+            That kind of reversal is normal here. Sometimes the first clean design is not the best one once the code gets real.
           </p>
           <div class="chips">
-            <span class="chip">Gradle</span>
-            <span class="chip">updater script</span>
-            <span class="chip">workflow change</span>
+            <span class="chip">PDC wrapper</span>
+            <span class="chip">startup fixes</span>
+            <span class="chip">less duplication</span>
+          </div>
+        </article>
+        <article class="entry" id="creative">
+          <div class="entry-date">Apr 21</div>
+          <h3>CreativeParkour and the rest of the stack started surviving the new world</h3>
+          <p>
+            The build side tightened up again: old workflows got removed, batch Maven got a quieter flag, and the server
+            stack kept moving toward modern API compatibility.
+          </p>
+          <p>
+            By evening, a small NPE fix in MountainDewritoes showed the next stage of work. Once the big compatibility
+            gaps are gone, the little runtime bugs finally come into view.
+          </p>
+          <div class="chips">
+            <span class="chip">workflow cleanup</span>
+            <span class="chip">NPE fix</span>
+            <span class="chip">runtime polish</span>
+          </div>
+        </article>
+        <article class="entry">
+          <div class="entry-date">Apr 22</div>
+          <h3>Server ping and shop fixes landed near the end</h3>
+          <p>
+            Evening. PrettySimpleShop got one last correction so it would use the actual shop item name.
+          </p>
+          <p>
+            In the same stretch, MountainDewritoes dropped ServerListPlus and took over the server ping path directly
+            with its own listener. Fewer layers. Less mystery. More control.
+          </p>
+          <div class="chips">
+            <span class="chip">shop item name</span>
+            <span class="chip">server ping</span>
+            <span class="chip">drop ServerListPlus</span>
           </div>
         </article>
         <article class="entry">
@@ -513,23 +579,38 @@
     </section>
 
     <section class="section panel">
-      <h2>One line for the whole stretch</h2>
-      <div class="repo-grid">
-        <div class="repo">
-          <div class="name">Big win</div>
-          <p>PrettySimpleShop working again felt like a real checkpoint: not just compiling, but behaving right.</p>
+      <h2>Late note</h2>
+      <div class="story-grid">
+        <div class="chart">
+          <div class="chart-title">
+            <strong>What felt biggest</strong>
+            <span>the stuff worth remembering</span>
+          </div>
+          <div class="quote" style="margin-top:0;">
+            PrettySimpleShop coming back was the clearest win. Not because it was the biggest file change, but because it
+            was the kind of fix players can actually feel.
+          </div>
+          <div class="quote">
+            MountainDewritoes mattered just as much, only quieter. It kept getting trimmed, re-shaped, and made less dependent
+            on old scaffolding until it could carry the server again.
+          </div>
         </div>
-        <div class="repo">
-          <div class="name">Behind the scenes</div>
-          <p>MountainDewritoes and friends carried the quiet but critical work that keeps a custom server coherent.</p>
+        <div class="chart">
+          <div class="chart-title">
+            <strong>What AI changed</strong>
+            <span>plain version</span>
+          </div>
+          <div class="quote" style="margin-top:0;">
+            It did not do the hard thinking for me. It did the repetitive digging fast enough that the whole week could stay
+            in motion instead of turning into a pile of tiny stalled tasks.
+          </div>
+          <div class="quote">
+            That is why the diary reads like several days of progress instead of several weeks of scattered repairs.
+          </div>
         </div>
-      </div>
-      <div class="quote">
-        AI did not erase the hard parts. It compressed the repetitive parts enough that the whole resurrection wave could
-        happen in hours or focused sessions instead of weeks of stop-and-start grinding.
       </div>
       <div class="foot">
-        Story view by design. Non-technical first. Numbers from local plugin clones checked on 2026-04-22.
+        Story view. Chronological first. Numbers from local plugin clones checked on 2026-04-22.
       </div>
     </section>
   </main>
