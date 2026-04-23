@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MLG Fortress Summary</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(160deg, #101612 0%, #161d18 100%);
+      color: #f4f0e3;
+      font-family: "Trebuchet MS", "Gill Sans", sans-serif;
+    }
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 42px 22px 64px;
+    }
+    .box {
+      background: rgba(26, 34, 29, 0.95);
+      border: 1px solid rgba(211, 224, 184, 0.12);
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: 0 18px 48px rgba(0,0,0,0.25);
+    }
+    .tag {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: #162117;
+      background: linear-gradient(90deg, #aecd72, #d9ebaa);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    h1 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      line-height: 0.95;
+    }
+    p, li { color: #c8c2af; line-height: 1.65; }
+    h2 { font-family: Georgia, "Times New Roman", serif; margin-top: 28px; }
+    ul { padding-left: 20px; }
+    a { color: #aecd72; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 22px;
+    }
+    .card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 18px;
+    }
+    .big {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2rem;
+      color: #efbc64;
+      margin-bottom: 6px;
+    }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } .box { padding: 22px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="box">
+      <div class="tag">Quick summary</div>
+      <h1>Server resurrection, short version</h1>
+      <p>Old 8-year Minecraft server. Modern Paper/Purpur era. Lots of plugin rescue, build cleanup, and config repair.</p>
+
+      <div class="grid">
+        <div class="card"><div class="big">45</div><p>plugin repos active in last week</p></div>
+        <div class="card"><div class="big">453</div><p>non-merge commits across update workspaces</p></div>
+        <div class="card"><div class="big">13</div><p>repos with real bug or behavior fixes</p></div>
+      </div>
+
+      <h2>What changed</h2>
+      <ul>
+        <li>Server moved toward `Paper/Purpur 26.1.2` and Java 21 compatibility.</li>
+        <li>Many old plugins in `MLG-Fortress` updated to compile and run again.</li>
+        <li>Build and CI setup modernized so future updates are less fragile.</li>
+        <li>Player IPs kept out of publishable docs.</li>
+      </ul>
+
+      <h2>Big wins</h2>
+      <ul>
+        <li><a href="STORY_REPORT.html#pretty">PrettySimpleShop</a> worked again after item-name and fallback fixes.</li>
+        <li><a href="STORY_REPORT.html#mountain">MountainDewritoes</a> got startup, config, and player-data repairs.</li>
+        <li><a href="STORY_REPORT.html#creative">CreativeParkour</a> survived modern API changes.</li>
+      </ul>
+
+      <p><a href="index.html">Back to chooser</a></p>
+    </div>
+  </main>
+</body>
+</html>

@@ -3,13 +3,192 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="refresh" content="0; url=VISUAL_REPORT.html">
   <title>MLG Fortress Resurrection</title>
-  <script>
-    location.replace('VISUAL_REPORT.html');
-  </script>
+  <style>
+    :root {
+      --bg: #101612;
+      --panel: rgba(24, 33, 28, 0.92);
+      --panel2: rgba(31, 43, 36, 0.94);
+      --line: rgba(220, 230, 193, 0.12);
+      --text: #f5efe0;
+      --muted: #c8c2af;
+      --gold: #efbc64;
+      --leaf: #aecd72;
+      --mint: #79d4c5;
+      --shadow: 0 18px 46px rgba(0,0,0,0.24);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: "Trebuchet MS", "Gill Sans", sans-serif;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 14% 18%, rgba(174, 205, 114, 0.16), transparent 24%),
+        radial-gradient(circle at 84% 16%, rgba(121, 212, 197, 0.12), transparent 24%),
+        linear-gradient(160deg, #0d120f 0%, #121914 45%, #191f1b 100%);
+    }
+
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 48px 22px 64px;
+    }
+
+    .hero {
+      padding: 36px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.04), transparent 36%),
+        var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: #162117;
+      background: linear-gradient(90deg, var(--leaf), #d9ebaa);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3rem, 7vw, 5.2rem);
+      line-height: 0.95;
+      max-width: 10ch;
+      letter-spacing: -0.04em;
+    }
+
+    p {
+      margin: 16px 0 0;
+      max-width: 64ch;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 1.05rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .card {
+      padding: 24px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: var(--panel2);
+      box-shadow: var(--shadow);
+      text-decoration: none;
+      color: var(--text);
+      transition: transform .18s ease, border-color .18s ease;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(239,188,100,0.38);
+    }
+
+    .label {
+      display: inline-block;
+      align-self: flex-start;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      color: var(--gold);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .card h2 {
+      margin: 0 0 10px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.55rem;
+    }
+
+    .card p {
+      margin: 0;
+      font-size: 0.98rem;
+    }
+
+    .card .cta {
+      margin-top: 18px;
+      color: var(--leaf);
+      font-weight: 700;
+    }
+
+    .footer {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+      .hero { padding: 26px; }
+    }
+  </style>
 </head>
 <body>
-  <p><a href="VISUAL_REPORT.html">Open visual report</a></p>
+  <main class="wrap">
+    <section class="hero">
+      <div class="eyebrow">Choose view</div>
+      <h1>MLG Fortress resurrection</h1>
+      <p>
+        Pick style. Short summary, visual report, or story diary. Same work, different read.
+      </p>
+    </section>
+
+    <section class="grid" aria-label="Report choices">
+      <a class="card" href="SUMMARY.html">
+        <div>
+          <span class="label">TL;DR</span>
+          <h2>Progress summary</h2>
+          <p>Fast scan. Best if you want simple overview of what changed and why it mattered.</p>
+        </div>
+        <div class="cta">Open summary</div>
+      </a>
+
+      <a class="card" href="VISUAL_REPORT.html">
+        <div>
+          <span class="label">Charts</span>
+          <h2>Visual report</h2>
+          <p>Clean infographic. Best if you want numbers, charts, and one-screen wow factor.</p>
+        </div>
+        <div class="cta">Open visuals</div>
+      </a>
+
+      <a class="card" href="STORY_REPORT.html">
+        <div>
+          <span class="label">Diary</span>
+          <h2>Story report</h2>
+          <p>Diary-style log. Best if you want a human read with repo-by-repo highlights.</p>
+        </div>
+        <div class="cta">Open story</div>
+      </a>
+    </section>
+
+    <div class="footer">
+      All views describe same resurrection work. `PrettySimpleShop` highlight lives in story and summary. `MountainDewritoes` too.
+    </div>
+  </main>
 </body>
 </html>
