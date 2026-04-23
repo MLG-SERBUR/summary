@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MLG Fortress Story Report</title>
+  <style>
+    :root {
+      --bg: #111612;
+      --bg2: #1a211b;
+      --panel: rgba(26, 34, 29, 0.92);
+      --panel2: rgba(34, 45, 38, 0.92);
+      --line: rgba(211, 224, 184, 0.12);
+      --text: #f4f0e3;
+      --muted: #c6c0ad;
+      --gold: #efbc64;
+      --leaf: #aacd73;
+      --mint: #7ad3c7;
+      --rose: #ee8f7d;
+      --shadow: 0 18px 48px rgba(0,0,0,0.25);
+      --radius: 24px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: "Trebuchet MS", "Gill Sans", sans-serif;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(170, 205, 115, 0.15), transparent 22%),
+        radial-gradient(circle at 86% 10%, rgba(122, 211, 199, 0.12), transparent 22%),
+        linear-gradient(160deg, #0c110d 0%, #121914 46%, #1a231d 100%);
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.16;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: radial-gradient(circle at center, black 45%, transparent 92%);
+    }
+
+    .page {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 40px 22px 72px;
+    }
+
+    .hero,
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero {
+      position: relative;
+      padding: 36px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.04), transparent 34%),
+        linear-gradient(160deg, rgba(122,211,199,0.08), transparent 42%),
+        rgba(18, 25, 20, 0.95);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -12% -22% auto;
+      width: 360px;
+      height: 360px;
+      background: radial-gradient(circle, rgba(239,188,100,0.18), transparent 66%);
+      pointer-events: none;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: #162117;
+      background: linear-gradient(90deg, var(--leaf), #d8ebaa);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    h1, h2, h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      margin: 0;
+      letter-spacing: -0.03em;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 7vw, 5.6rem);
+      line-height: 0.94;
+      max-width: 10ch;
+    }
+
+    .hero-grid,
+    .two-col,
+    .story-grid,
+    .repo-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .hero-grid {
+      grid-template-columns: 1.25fr 0.75fr;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero p {
+      max-width: 62ch;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 1.04rem;
+      margin: 16px 0 0;
+    }
+
+    .hero-note {
+      align-self: end;
+      padding: 22px;
+      border-radius: 22px;
+      background: rgba(10, 16, 12, 0.46);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .hero-note strong {
+      display: block;
+      color: var(--gold);
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-note span {
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .section {
+      margin-top: 26px;
+    }
+
+    .panel {
+      padding: 28px;
+      background: var(--panel2);
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+      line-height: 1.02;
+      margin-bottom: 10px;
+    }
+
+    .sub {
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 62ch;
+      margin-bottom: 22px;
+    }
+
+    .story-grid {
+      grid-template-columns: 1.1fr 0.9fr;
+    }
+
+    .chart {
+      padding: 22px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .chart-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .chart-title strong {
+      font-size: 1.1rem;
+    }
+
+    .chart-title span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: 180px 1fr 52px;
+      gap: 12px;
+      align-items: center;
+      margin: 14px 0;
+    }
+
+    .bar-row label {
+      font-weight: 700;
+    }
+
+    .bar-shell {
+      height: 18px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--mint), var(--leaf));
+    }
+
+    .bar-fill.gold { background: linear-gradient(90deg, var(--gold), #ffd88b); }
+    .bar-fill.rose { background: linear-gradient(90deg, var(--rose), #ffb7ac); }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+    }
+
+    .entry {
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
+      padding: 22px;
+      position: relative;
+    }
+
+    .entry::before {
+      content: "";
+      position: absolute;
+      left: 18px;
+      top: -8px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 8px rgba(239,188,100,0.12);
+    }
+
+    .entry-date {
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .entry h3 {
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+    }
+
+    .entry p {
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 0 0 12px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .chip {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--text);
+      font-size: 0.86rem;
+    }
+
+    .repo-grid {
+      grid-template-columns: repeat(2, 1fr);
+      margin-top: 16px;
+    }
+
+    .repo {
+      padding: 20px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .repo .name {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--leaf), #d5ea99);
+      color: #162117;
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .repo p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .quote {
+      margin-top: 16px;
+      padding: 18px 20px;
+      border-left: 4px solid var(--gold);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      line-height: 1.6;
+      border-radius: 16px;
+    }
+
+    .foot {
+      color: var(--muted);
+      text-align: center;
+      line-height: 1.5;
+      margin-top: 18px;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .story-grid,
+      .repo-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .page { padding: 22px 14px 52px; }
+      .hero, .panel { border-radius: 18px; }
+      .hero { padding: 24px; }
+      .panel { padding: 22px; }
+      .bar-row { grid-template-columns: 1fr; }
+      .chart-title { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="tag">Diary style story</div>
+          <h1>How the server came back to life</h1>
+          <p>
+            This stretch felt like wandering room to room in an old house, turning lights back on, fixing broken doors,
+            and realizing every repair mattered. Some work was pure survival. Some was polish. Some was simply making
+            old magic feel alive again.
+          </p>
+        </div>
+        <aside class="hero-note">
+          <strong>45 repos</strong>
+          <span>
+            Unique plugin repos showed action in the last week. The work was wide, but the story was also personal:
+            each fix had its own little fight.
+          </span>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section panel">
+      <h2>The shape of the week</h2>
+      <div class="sub">
+        Same story, different rooms: first the platform, then the glue, then the features people actually notice.
+      </div>
+      <div class="story-grid">
+        <div class="chart">
+          <div class="chart-title">
+            <strong>What kept showing up</strong>
+            <span>rough weight of work, not exact stopwatch time</span>
+          </div>
+          <div class="bar-row">
+            <label>Build / CI</label>
+            <div class="bar-shell"><div class="bar-fill" style="width: 89%;"></div></div>
+            <div>40</div>
+          </div>
+          <div class="bar-row">
+            <label>Version rescue</label>
+            <div class="bar-shell"><div class="bar-fill gold" style="width: 47%;"></div></div>
+            <div>21</div>
+          </div>
+          <div class="bar-row">
+            <label>Behavior fixes</label>
+            <div class="bar-shell"><div class="bar-fill rose" style="width: 29%;"></div></div>
+            <div>13</div>
+          </div>
+          <div class="quote">
+            The big pattern: lots of old plugins did not just need a compile fix.
+            They needed to remember how to behave in modern Minecraft.
+          </div>
+        </div>
+        <div class="chart">
+          <div class="chart-title">
+            <strong>How it felt</strong>
+            <span>the diary version</span>
+          </div>
+          <div class="quote" style="margin-top:0;">
+            <strong>Some days:</strong> I spent all my energy on one plugin that looked almost fine, then turned out to have
+            one tiny assumption from years ago that no longer fit.
+          </div>
+          <div class="quote">
+            <strong>Other days:</strong> The win was not flashy. It was a workflow, a config, or a test that made the
+            next update less fragile.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section panel">
+      <h2>Diary entries by repo</h2>
+      <div class="sub">
+        Each entry below is the kind of thing you would write after a long day: what broke, what got fixed, and why it mattered.
+      </div>
+      <div class="timeline">
+        <article class="entry">
+          <div class="entry-date">PrettySimpleShop</div>
+          <h3>The shop finally felt right again</h3>
+          <p>
+            This one ate real time. The plugin did not just need a version bump. It needed item-name logic and fallback
+            fixes so shops would show the right thing again instead of silently drifting off into old assumptions.
+          </p>
+          <div class="chips">
+            <span class="chip">Purpur 26.1.2</span>
+            <span class="chip">item-name fixes</span>
+            <span class="chip">behavior cleanup</span>
+          </div>
+        </article>
+        <article class="entry">
+          <div class="entry-date">MountainDewritoes</div>
+          <h3>The glue plugin got real care</h3>
+          <p>
+            This was server-specific plumbing, the sort of thing most players never see directly until it breaks.
+            Startup, config, and player-data storage got fixed so the server could trust its own memory again.
+          </p>
+          <div class="chips">
+            <span class="chip">startup fixes</span>
+            <span class="chip">player data</span>
+            <span class="chip">dependency cleanup</span>
+          </div>
+        </article>
+        <article class="entry">
+          <div class="entry-date">CreativeParkour</div>
+          <h3>Old minigame code survived the new world</h3>
+          <p>
+            This work was about keeping a familiar game alive on modern server APIs. The code needed compatibility fixes
+            and build cleanup so it could keep being the same game without being trapped in the past.
+          </p>
+          <div class="chips">
+            <span class="chip">API updates</span>
+            <span class="chip">CI cleanup</span>
+            <span class="chip">modern builds</span>
+          </div>
+        </article>
+        <article class="entry">
+          <div class="entry-date">ItemNameLab</div>
+          <h3>The support tool got sharper</h3>
+          <p>
+            Not flashy, but useful. Tests, translated-name handling, and cleaner output behavior made item names easier to
+            trust, which helps the rest of the modernization story hold together.
+          </p>
+          <div class="chips">
+            <span class="chip">tests</span>
+            <span class="chip">translated names</span>
+            <span class="chip">components</span>
+          </div>
+        </article>
+        <article class="entry">
+          <div class="entry-date">Multiverse-Core</div>
+          <h3>One tool changed shape</h3>
+          <p>
+            Updater logic had to follow the project where it actually went. The build shifted to Gradle, so the update script
+            had to learn the new route instead of following the old one.
+          </p>
+          <div class="chips">
+            <span class="chip">Gradle</span>
+            <span class="chip">updater script</span>
+            <span class="chip">workflow change</span>
+          </div>
+        </article>
+        <article class="entry">
+          <div class="entry-date">The cleanup pass</div>
+          <h3>Even the strange leftovers got explained</h3>
+          <p>
+            Some things were not source material at all. World images and other odd files got identified for what they were:
+            generated artifacts, not mystery project assets.
+          </p>
+          <div class="chips">
+            <span class="chip">generated files</span>
+            <span class="chip">Dynmap outputs</span>
+            <span class="chip">less clutter</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section panel">
+      <h2>One line for the whole stretch</h2>
+      <div class="repo-grid">
+        <div class="repo">
+          <div class="name">Big win</div>
+          <p>PrettySimpleShop working again felt like a real checkpoint: not just compiling, but behaving right.</p>
+        </div>
+        <div class="repo">
+          <div class="name">Behind the scenes</div>
+          <p>MountainDewritoes and friends carried the quiet but critical work that keeps a custom server coherent.</p>
+        </div>
+      </div>
+      <div class="quote">
+        AI did not erase the hard parts. It compressed the repetitive parts enough that the whole resurrection wave could
+        happen in hours or focused sessions instead of weeks of stop-and-start grinding.
+      </div>
+      <div class="foot">
+        Story view by design. Non-technical first. Numbers from local plugin clones checked on 2026-04-22.
+      </div>
+    </section>
+  </main>
+</body>
+</html>

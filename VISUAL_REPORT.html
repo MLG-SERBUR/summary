@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MLG Fortress Resurrection - Visual Report</title>
+  <style>
+    :root {
+      --bg: #0f1412;
+      --bg-2: #17201c;
+      --panel: rgba(20, 29, 25, 0.82);
+      --panel-2: rgba(28, 40, 34, 0.92);
+      --line: rgba(201, 225, 168, 0.16);
+      --text: #f2efdf;
+      --muted: #c4c0ae;
+      --lime: #b8d66b;
+      --gold: #f2bb57;
+      --ember: #ff7a45;
+      --sky: #71d6c7;
+      --rose: #ff9e91;
+      --shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+      --radius: 24px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: "Trebuchet MS", "Gill Sans", sans-serif;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(184, 214, 107, 0.22), transparent 26%),
+        radial-gradient(circle at 88% 12%, rgba(113, 214, 199, 0.16), transparent 24%),
+        radial-gradient(circle at 75% 85%, rgba(242, 187, 87, 0.16), transparent 24%),
+        linear-gradient(160deg, #0d120f 0%, #121916 44%, #19221d 100%);
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.18;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: radial-gradient(circle at center, black 45%, transparent 95%);
+    }
+
+    .page {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 42px 22px 72px;
+    }
+
+    .export-btn {
+      position: fixed;
+      right: 18px;
+      top: 18px;
+      z-index: 20;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: linear-gradient(90deg, var(--gold), #ffd98c);
+      color: #142117;
+      font: 700 0.92rem/1.1 "Trebuchet MS", sans-serif;
+      padding: 12px 16px;
+      border-radius: 999px;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.24);
+      cursor: pointer;
+    }
+
+    .export-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .export-btn:active {
+      transform: translateY(0);
+    }
+
+    .hero,
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+      overflow: hidden;
+      animation: rise 700ms ease both;
+    }
+
+    .hero {
+      position: relative;
+      padding: 36px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.04), transparent 36%),
+        linear-gradient(120deg, rgba(184, 214, 107, 0.16), transparent 58%),
+        linear-gradient(180deg, rgba(20, 29, 25, 0.96), rgba(20, 29, 25, 0.84));
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -10%;
+      top: -15%;
+      width: 320px;
+      height: 320px;
+      background:
+        radial-gradient(circle at center, rgba(255, 122, 69, 0.18), transparent 46%),
+        radial-gradient(circle at center, rgba(242, 187, 87, 0.24), transparent 58%);
+      transform: rotate(18deg);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: #132118;
+      background: linear-gradient(90deg, var(--lime), #dceb9f);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    .big-number {
+      font-family: Georgia, "Times New Roman", serif;
+      margin: 0;
+    }
+
+    h1 {
+      max-width: 9ch;
+      font-size: clamp(3rem, 8vw, 5.6rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 26px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero p {
+      max-width: 58ch;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.6;
+      margin: 18px 0 0;
+    }
+
+    .hero-note {
+      align-self: end;
+      padding: 20px;
+      border-radius: 22px;
+      background: rgba(10, 16, 13, 0.44);
+      border: 1px solid rgba(242, 239, 223, 0.1);
+    }
+
+    .hero-note strong {
+      display: block;
+      color: var(--gold);
+      font-size: 1.9rem;
+      margin-bottom: 8px;
+    }
+
+    .hero-note span {
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .section {
+      margin-top: 26px;
+      animation: rise 700ms ease both;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 18px;
+    }
+
+    .stat-card {
+      padding: 22px;
+      background: var(--panel-2);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      animation: rise 700ms ease both;
+    }
+
+    .stat-card:nth-child(2) { animation-delay: 70ms; }
+    .stat-card:nth-child(3) { animation-delay: 140ms; }
+    .stat-card:nth-child(4) { animation-delay: 210ms; }
+    .stat-card:nth-child(5) { animation-delay: 280ms; }
+
+    .big-number {
+      font-size: clamp(2.2rem, 4vw, 3.3rem);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .stat-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .stat-copy {
+      color: var(--text);
+      line-height: 1.45;
+      font-size: 0.96rem;
+    }
+
+    .layout-2 {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 18px;
+    }
+
+    .panel {
+      padding: 28px;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+
+    .sub {
+      color: var(--muted);
+      line-height: 1.55;
+      margin-bottom: 24px;
+      max-width: 58ch;
+    }
+
+    .bars {
+      display: grid;
+      gap: 18px;
+    }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: 165px 1fr 64px;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .bar-label {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .bar-shell {
+      height: 18px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--sky), var(--lime));
+      box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+
+    .bar-fill.gold {
+      background: linear-gradient(90deg, var(--gold), #ffd78a);
+    }
+
+    .bar-fill.ember {
+      background: linear-gradient(90deg, var(--ember), var(--rose));
+    }
+
+    .bar-value {
+      color: var(--muted);
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .foot {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-top: 18px;
+      line-height: 1.5;
+    }
+
+    .rings {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .ring-card {
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .ring {
+      --fill: 0deg;
+      width: 148px;
+      height: 148px;
+      border-radius: 50%;
+      margin: 10px auto 16px;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle closest-side, #132018 68%, transparent 69%),
+        conic-gradient(var(--lime) var(--fill), rgba(255, 255, 255, 0.08) 0);
+    }
+
+    .ring.gold {
+      background:
+        radial-gradient(circle closest-side, #22170e 68%, transparent 69%),
+        conic-gradient(var(--gold) var(--fill), rgba(255, 255, 255, 0.08) 0);
+    }
+
+    .ring-number {
+      text-align: center;
+      line-height: 1;
+    }
+
+    .ring-number strong {
+      display: block;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2.4rem;
+    }
+
+    .ring-number span {
+      color: var(--muted);
+      font-size: 0.86rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .ring-copy {
+      color: var(--muted);
+      line-height: 1.5;
+      text-align: center;
+      min-height: 4.6em;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .time-card {
+      position: relative;
+      padding: 20px;
+      border-radius: 20px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent),
+        rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .time-card::before {
+      content: "";
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--gold);
+      position: absolute;
+      top: -7px;
+      left: 22px;
+      box-shadow: 0 0 0 8px rgba(242, 187, 87, 0.12);
+    }
+
+    .time-date {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .time-title {
+      font-weight: 700;
+      margin-bottom: 10px;
+      font-size: 1.02rem;
+    }
+
+    .time-copy {
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 0.95rem;
+    }
+
+    .compare {
+      display: grid;
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .compare-row {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .compare-label strong {
+      display: block;
+      font-size: 1.05rem;
+      margin-bottom: 4px;
+    }
+
+    .compare-label span {
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.4;
+    }
+
+    .compare-bar {
+      height: 64px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      padding: 0 18px;
+      font-size: 1.02rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .compare-bar.manual {
+      width: 100%;
+      background:
+        linear-gradient(90deg, rgba(255, 122, 69, 0.82), rgba(255, 158, 145, 0.9));
+      color: #26150f;
+    }
+
+    .compare-bar.ai {
+      width: 42%;
+      min-width: 260px;
+      background:
+        linear-gradient(90deg, rgba(113, 214, 199, 0.88), rgba(184, 214, 107, 0.92));
+      color: #14241f;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .reason {
+      padding: 20px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .reason h3 {
+      margin-bottom: 10px;
+      font-size: 1.15rem;
+    }
+
+    .reason p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .highlight {
+      padding: 22px;
+      border-radius: 20px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent),
+        rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .highlight-tag {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #152218;
+      background: linear-gradient(90deg, var(--gold), #ffd78a);
+      font-weight: 700;
+    }
+
+    .highlight h3 {
+      margin-bottom: 10px;
+      font-size: 1.24rem;
+    }
+
+    .highlight p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .source {
+      margin-top: 26px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      text-align: center;
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .layout-2,
+      .stats,
+      .timeline,
+      .grid-4,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .rings {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .compare-row,
+      .bar-row {
+        grid-template-columns: 1fr;
+      }
+
+      .compare-bar.ai,
+      .compare-bar.manual {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .page {
+        padding: 22px 14px 48px;
+      }
+
+      .export-btn {
+        right: 12px;
+        top: 12px;
+        padding: 10px 14px;
+      }
+
+      .hero,
+      .panel,
+      .stat-card {
+        border-radius: 18px;
+      }
+
+      .hero {
+        padding: 24px;
+      }
+
+      .panel {
+        padding: 22px;
+      }
+
+      .rings {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button class="export-btn" id="exportPng" type="button">Export PNG</button>
+  <main class="page">
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">MLG Fortress Visual Report</div>
+          <h1>8 years old. Playable again.</h1>
+          <p>
+            This server upgrade was not one version bump. It was a full resurrection pass across custom plugins,
+            build pipelines, config compatibility, and gameplay behavior. Same strange old server energy. Much newer guts.
+          </p>
+        </div>
+        <aside class="hero-note">
+          <strong>Weeks vs hours</strong>
+          <span>
+            Reasonable estimate: AI compressed repetitive migration and triage work hard enough to turn
+            "weeks of spare-time maintenance" into few focused sessions.
+          </span>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section stats">
+      <article class="stat-card">
+        <div class="big-number">45</div>
+        <div class="stat-label">Active repos</div>
+        <div class="stat-copy">Unique plugin repos with visible work in last 7 days.</div>
+      </article>
+      <article class="stat-card">
+        <div class="big-number">453</div>
+        <div class="stat-label">Recent commits</div>
+        <div class="stat-copy">Non-merge commits across local update workspaces during that same stretch.</div>
+      </article>
+      <article class="stat-card">
+        <div class="big-number">21</div>
+        <div class="stat-label">Migration repos</div>
+        <div class="stat-copy">Repos with clear 26.1.2, API, compile, or Java 21 upgrade work.</div>
+      </article>
+      <article class="stat-card">
+        <div class="big-number">40</div>
+        <div class="stat-label">CI / build repos</div>
+        <div class="stat-copy">Repos touched by workflow, Maven, release, or build-system cleanup.</div>
+      </article>
+      <article class="stat-card">
+        <div class="big-number">13</div>
+        <div class="stat-label">Behavior fixes</div>
+        <div class="stat-copy">Repos with real bug, config, data, or gameplay behavior fixes.</div>
+      </article>
+    </section>
+
+    <section class="section layout-2">
+      <article class="panel">
+        <h2>What kind of work happened?</h2>
+        <div class="sub">
+          Most visible work was not flashy feature work. It was compatibility surgery, build repair, and logic cleanup.
+          Categories overlap. Same repo can appear in more than one bucket.
+        </div>
+        <div class="bars">
+          <div class="bar-row">
+            <div class="bar-label">CI / build work</div>
+            <div class="bar-shell"><div class="bar-fill" style="width: 88.9%;"></div></div>
+            <div class="bar-value">40 / 45</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Version migration</div>
+            <div class="bar-shell"><div class="bar-fill gold" style="width: 46.7%;"></div></div>
+            <div class="bar-value">21 / 45</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Bug / behavior fix</div>
+            <div class="bar-shell"><div class="bar-fill ember" style="width: 28.9%;"></div></div>
+            <div class="bar-value">13 / 45</div>
+          </div>
+        </div>
+        <div class="foot">
+          Translation for non-technical humans: lots of old plugin code had to be convinced, one piece at a time,
+          that modern Minecraft still exists.
+        </div>
+      </article>
+
+      <article class="panel">
+        <h2>Why it was big</h2>
+        <div class="sub">
+          Old server revivals feel slow because problem hides in many layers at once.
+        </div>
+        <div class="rings">
+          <div class="ring-card">
+            <div class="ring" style="--fill: 320deg;">
+              <div class="ring-number">
+                <strong>many</strong>
+                <span>repos</span>
+              </div>
+            </div>
+            <div class="ring-copy">Custom plugins, helpers, CI, and support tooling all moved together.</div>
+          </div>
+          <div class="ring-card">
+            <div class="ring gold" style="--fill: 275deg;">
+              <div class="ring-number">
+                <strong>old</strong>
+                <span>assumptions</span>
+              </div>
+            </div>
+            <div class="ring-copy">API drift, dependency drift, and config drift stacked on top of each other.</div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="section panel">
+      <h2>One week timeline</h2>
+      <div class="sub">
+        This was wave after wave, not one giant final patch.
+      </div>
+      <div class="timeline">
+        <div class="time-card">
+          <div class="time-date">Apr 16</div>
+          <div class="time-title">Modern baseline</div>
+          <div class="time-copy">First big push toward Paper or Purpur 26.1.2 and Java 21 compatibility.</div>
+        </div>
+        <div class="time-card">
+          <div class="time-date">Apr 17-18</div>
+          <div class="time-title">Build backbone</div>
+          <div class="time-copy">GitHub Actions, release workflows, and Maven cleanup spread across many repos.</div>
+        </div>
+        <div class="time-card">
+          <div class="time-date">Apr 20-21</div>
+          <div class="time-title">Real fixes</div>
+          <div class="time-copy">Startup, config, item-name, player-data, and compile-failure fixes landed on top.</div>
+        </div>
+        <div class="time-card">
+          <div class="time-date">Apr 22</div>
+          <div class="time-title">Story pass</div>
+          <div class="time-copy">Work turned into something readable: report, scope writeup, and visuals like this.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section panel">
+      <h2>AI changed pace, not difficulty</h2>
+      <div class="sub">
+        Important distinction. AI did not magically remove technical depth. AI removed huge amount of repeated grind.
+      </div>
+      <div class="compare">
+        <div class="compare-row">
+          <div class="compare-label">
+            <strong>Manual-only path</strong>
+            <span>Likely weeks of spare-time maintenance.</span>
+          </div>
+          <div class="compare-bar manual">Weeks of repo-by-repo drift repair</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-label">
+            <strong>AI-assisted path</strong>
+            <span>Hours to few focused days for first resurrection wave.</span>
+          </div>
+          <div class="compare-bar ai">Fast triage, draft patches, repeated migration work</div>
+        </div>
+      </div>
+      <div class="foot">
+        Estimate only. Based on observed repo scope and repeated work patterns, not stopwatch timing.
+      </div>
+    </section>
+
+    <section class="section panel">
+      <h2>Big highlights people can feel</h2>
+      <div class="sub">
+        Numbers show scale. These show why time mattered.
+      </div>
+      <div class="grid-3">
+        <article class="highlight">
+          <div class="highlight-tag">Big win</div>
+          <h3>PrettySimpleShop works again</h3>
+          <p>
+            Not only version bump. Needed Purpur 26.1.2 update, item-name fallback fixes, and behavior cleanup.
+            Good example of hard part being "make feature act right again," not only "make code compile."
+          </p>
+        </article>
+        <article class="highlight">
+          <div class="highlight-tag">Core plugin</div>
+          <h3>MountainDewritoes got real repair work</h3>
+          <p>
+            Startup and config fixes, player-data-storage refactors, dependency cleanup. Important because this plugin holds
+            lot of server-specific identity.
+          </p>
+        </article>
+        <article class="highlight">
+          <div class="highlight-tag">Support tool</div>
+          <h3>ItemNameLab became useful infrastructure</h3>
+          <p>
+            Better translated-name handling, tests, command cleanup, component output. Less flashy, but helps old item behavior
+            stop breaking in weird ways.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid-4">
+        <article class="reason">
+          <h3>API drift</h3>
+          <p>Old Bukkit or Paper assumptions no longer compile cleanly against modern server code.</p>
+        </article>
+        <article class="reason">
+          <h3>Build drift</h3>
+          <p>Some repos needed workflow and release cleanup before results could be trusted.</p>
+        </article>
+        <article class="reason">
+          <h3>Behavior drift</h3>
+          <p>Compile success was not enough. Some plugins needed real logic or config fixes too.</p>
+        </article>
+        <article class="reason">
+          <h3>Context switching</h3>
+          <p>Each repo had own age, style, dependencies, and weird history. Time goes there fast.</p>
+        </article>
+      </div>
+    </section>
+
+    <div class="source">
+      Numbers in this visual come from local MLG Fortress plugin clones checked on 2026-04-22.
+      Publishable view by design: real server-directory path omitted.
+    </div>
+  </main>
+  <script>
+    const exportButton = document.getElementById('exportPng');
+
+    const posterData = {
+      title: 'MLG Fortress Resurrection',
+      subtitle: '8-year-old Minecraft server dragged into modern era',
+      date: 'Data checked 2026-04-22',
+      stats: [
+        ['45', 'Active repos'],
+        ['453', 'Recent commits'],
+        ['21', 'Migration repos'],
+        ['40', 'CI / build repos'],
+        ['13', 'Behavior fixes'],
+      ],
+      highlights: [
+        ['PrettySimpleShop', 'Works again. Needed Purpur 26.1.2 update plus item-name and fallback logic fixes.'],
+        ['MountainDewritoes', 'Real repair work. Startup, config, and player-data storage fixes.'],
+        ['ItemNameLab', 'Support tooling. Tests, translated names, and cleaner output behavior.'],
+      ],
+    };
+
+    function roundRect(ctx, x, y, w, h, r) {
+      const radius = Math.min(r, w / 2, h / 2);
+      ctx.beginPath();
+      ctx.moveTo(x + radius, y);
+      ctx.arcTo(x + w, y, x + w, y + h, radius);
+      ctx.arcTo(x + w, y + h, x, y + h, radius);
+      ctx.arcTo(x, y + h, x, y, radius);
+      ctx.arcTo(x, y, x + w, y, radius);
+      ctx.closePath();
+    }
+
+    function fillCard(ctx, x, y, w, h, fill, stroke) {
+      roundRect(ctx, x, y, w, h, 30);
+      ctx.fillStyle = fill;
+      ctx.fill();
+      if (stroke) {
+        ctx.strokeStyle = stroke;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+      }
+    }
+
+    function wrapText(ctx, text, x, y, maxWidth, lineHeight, maxLines = 99) {
+      const words = text.split(/\s+/);
+      let line = '';
+      let lines = 0;
+      for (const word of words) {
+        const test = line ? `${line} ${word}` : word;
+        if (ctx.measureText(test).width > maxWidth && line) {
+          ctx.fillText(line, x, y);
+          y += lineHeight;
+          line = word;
+          lines += 1;
+          if (lines >= maxLines) return y;
+        } else {
+          line = test;
+        }
+      }
+      if (line && lines < maxLines) ctx.fillText(line, x, y);
+      return y + lineHeight;
+    }
+
+    function drawPoster() {
+      const canvas = document.createElement('canvas');
+      canvas.width = 1600;
+      canvas.height = 2200;
+      const ctx = canvas.getContext('2d');
+
+      const bg = ctx.createLinearGradient(0, 0, 1600, 2200);
+      bg.addColorStop(0, '#0d120f');
+      bg.addColorStop(0.5, '#141c18');
+      bg.addColorStop(1, '#1a231e');
+      ctx.fillStyle = bg;
+      ctx.fillRect(0, 0, 1600, 2200);
+
+      const glow = ctx.createRadialGradient(260, 220, 0, 260, 220, 420);
+      glow.addColorStop(0, 'rgba(184,214,107,0.20)');
+      glow.addColorStop(1, 'rgba(184,214,107,0)');
+      ctx.fillStyle = glow;
+      ctx.fillRect(0, 0, 1600, 2200);
+
+      ctx.fillStyle = 'rgba(255,255,255,0.05)';
+      for (let y = 0; y < 2200; y += 40) ctx.fillRect(0, y, 1600, 1);
+      for (let x = 0; x < 1600; x += 40) ctx.fillRect(x, 0, 1, 2200);
+
+      fillCard(ctx, 70, 70, 1460, 320, 'rgba(18, 26, 22, 0.92)', 'rgba(201,225,168,0.16)');
+      ctx.fillStyle = '#b8d66b';
+      roundRect(ctx, 1120, 108, 310, 52, 26);
+      ctx.fill();
+      ctx.fillStyle = '#122018';
+      ctx.font = '700 22px Trebuchet MS, sans-serif';
+      ctx.fillText('Visual report', 1165, 142);
+
+      ctx.fillStyle = '#f2efdf';
+      ctx.font = '700 82px Georgia, serif';
+      wrapText(ctx, posterData.title, 118, 205, 760, 84, 2);
+      ctx.font = '400 30px Trebuchet MS, sans-serif';
+      ctx.fillStyle = '#c4c0ae';
+      wrapText(ctx, posterData.subtitle, 118, 360, 900, 40, 3);
+      ctx.fillStyle = '#f2bb57';
+      ctx.font = '700 24px Trebuchet MS, sans-serif';
+      ctx.fillText(posterData.date, 118, 430);
+
+      const statY = 450;
+      const statW = 260;
+      const statH = 150;
+      const statGap = 20;
+      posterData.stats.forEach((item, i) => {
+        const col = i % 3;
+        const row = Math.floor(i / 3);
+        const x = 70 + col * (statW + statGap);
+        const y = statY + row * (statH + 20);
+        fillCard(ctx, x, y, statW, statH, 'rgba(28, 40, 34, 0.92)', 'rgba(255,255,255,0.08)');
+        ctx.fillStyle = '#f2bb57';
+        ctx.font = '700 56px Georgia, serif';
+        ctx.fillText(item[0], x + 24, y + 64);
+        ctx.fillStyle = '#f2efdf';
+        ctx.font = '700 24px Trebuchet MS, sans-serif';
+        ctx.fillText(item[1], x + 24, y + 110);
+      });
+
+      fillCard(ctx, 900, 450, 630, 340, 'rgba(20, 29, 25, 0.96)', 'rgba(255,255,255,0.08)');
+      ctx.fillStyle = '#f2efdf';
+      ctx.font = '700 36px Georgia, serif';
+      ctx.fillText('Why it took hours', 940, 505);
+      ctx.fillStyle = '#c4c0ae';
+      ctx.font = '400 26px Trebuchet MS, sans-serif';
+      wrapText(ctx, 'Many old plugins, many build systems, many tiny breakpoints. AI removed repetitive grind, not hard technical decisions.', 940, 550, 530, 36, 6);
+      ctx.fillStyle = '#b8d66b';
+      ctx.font = '700 24px Trebuchet MS, sans-serif';
+      ctx.fillText('Manual-only: likely weeks', 940, 700);
+      ctx.fillStyle = '#71d6c7';
+      ctx.fillText('AI-assisted: hours to few days', 940, 740);
+
+      fillCard(ctx, 70, 720, 1460, 640, 'rgba(28, 40, 34, 0.9)', 'rgba(255,255,255,0.08)');
+      ctx.fillStyle = '#f2efdf';
+      ctx.font = '700 42px Georgia, serif';
+      ctx.fillText('Big highlights people can feel', 118, 790);
+
+      posterData.highlights.forEach((item, i) => {
+        const y = 840 + i * 165;
+        fillCard(ctx, 118, y, 1360, 132, 'rgba(255,255,255,0.04)', 'rgba(255,255,255,0.08)');
+        ctx.fillStyle = '#f2bb57';
+        ctx.font = '700 22px Trebuchet MS, sans-serif';
+        ctx.fillText(item[0], 150, y + 42);
+        ctx.fillStyle = '#f2efdf';
+        ctx.font = '700 30px Georgia, serif';
+        ctx.fillText(item[0], 150, y + 82);
+        ctx.fillStyle = '#c4c0ae';
+        ctx.font = '400 24px Trebuchet MS, sans-serif';
+        wrapText(ctx, item[1], 620, y + 54, 820, 32, 3);
+      });
+
+      ctx.fillStyle = '#c4c0ae';
+      ctx.font = '400 20px Trebuchet MS, sans-serif';
+      wrapText(ctx, 'Numbers come from local MLG Fortress plugin clones checked on 2026-04-22. Publishable view by design: real server-directory path omitted.', 120, 1900, 1360, 28, 4);
+
+      return canvas;
+    }
+
+    exportButton.addEventListener('click', () => {
+      const canvas = drawPoster();
+      canvas.toBlob((blob) => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'mlg-fortress-resurrection.png';
+        a.click();
+        setTimeout(() => URL.revokeObjectURL(url), 1500);
+      }, 'image/png');
+    });
+  </script>
+</body>
+</html>
