@@ -409,7 +409,7 @@
 
     <div class="entry">
       <div class="entry-date">Monday, April 14</div>
-      <h2>MountainDewritoes Was a Mess</h2>
+      <h2>GrandioseAPI Got Replaced With Something Simpler</h2>
       <p>
         He opened up the server's custom plugin folder and honestly, it was overwhelming.
         MountainDewritoes — yeah, that's really what he called it — had grown into this massive beast
@@ -417,17 +417,24 @@
         Fortress feel like MLG Fortress.
       </p>
       <p>
-        The first problem? It depended on something called GrandioseAPI, which sounded fancy but was
-        really just making everything more complicated. So he had an AI rip it out. Player data got
-        moved to something simpler. But then he realized the main plugin file was getting huge, so
-        he had to bring back a small wrapper to keep things readable.
+        MountainDewritoes depended on GrandioseAPI, a custom plugin he'd built to handle player
+        data storage. It worked fine — stored everything in a `grandPlayers/` folder with UUID-named
+        files. But Minecraft now has something called the PDC (Persistent Data Container) API
+        built right in.
+      </p>
+      <p>
+        So he had an AI help him remove the GrandioseAPI dependency and switch to PDC directly
+        in MountainDewritoes. Less plugins to maintain, same result. But then he realized the
+        main plugin file was getting huge with the PDC code, so he brought back a small wrapper
+        to keep things readable.
       </p>
       <p>
         It was one of those days where every fix created a new problem. Classic.
       </p>
       <div class="player-note">
         For players: This plugin is why your player data doesn't vanish when you update the server.
-        It's the backbone of a lot of the custom stuff you see in-game.
+        It's the backbone of a lot of the custom stuff you see in-game. He just simplified how
+        it stores your data behind the scenes.
       </div>
     </div>
 
