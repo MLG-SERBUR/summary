@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MLG Fortress - The Resurrection</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin:0; padding:0; }
 
     body {
       font-family: Georgia, "Times New Roman", serif;
@@ -49,26 +49,21 @@
     .link {
       display: block;
       padding: 24px;
-      background: #232a25;
-      border-left: 4px solid #5a7a52;
       text-decoration: none;
-      color: #e8e0d0;
-      transition: background 0.15s, border-color 0.15s;
+      transition: transform 0.15s, border-color 0.15s;
+      border-left: 4px solid;
     }
 
     .link:hover {
-      background: #2a322c;
-      border-color: #8b7355;
+      transform: translateY(-2px);
     }
 
     .link h2 {
       font-size: 1.4rem;
       margin-bottom: 8px;
-      color: #f5f1e8;
     }
 
     .link p {
-      color: #8b8578;
       font-size: 0.95rem;
       margin: 0;
     }
@@ -77,17 +72,63 @@
       display: inline-block;
       margin-top: 12px;
       font-size: 0.85rem;
-      color: #5a7a52;
       font-style: italic;
     }
 
-    .link.new {
-      border-left-color: #c4983a;
+    /* DIARY_STORY - Paper/Book style */
+    .link.diary-story {
+      background: #f5f1e8;
+      border-left-color: #8b7355;
+      color: #2c2418;
     }
+    .link.diary-story h2 { color: #2c2418; }
+    .link.diary-story p { color: #5a4e3c; }
+    .link.diary-story .note { color: #8b7355; }
+    .link.diary-story:hover { background: #e8e0d0; }
 
-    .link.new .note {
-      color: #c4983a;
+    /* DIARY_VISUAL - Paper style with chart colors */
+    .link.diary-visual {
+      background: #f5f1e8;
+      border-left-color: #4a6741;
+      color: #2c2418;
     }
+    .link.diary-visual h2 { color: #2c2418; }
+    .link.diary-visual p { color: #5a4e3c; }
+    .link.diary-visual .note { color: #c4983a; }
+    .link.diary-visual:hover { background: #e8e0d0; }
+
+    /* STORY_REPORT - Dark green/mint theme */
+    .link.story-report {
+      background: #1a251d;
+      border-left-color: #aacd73;
+      color: #f4f0e3;
+    }
+    .link.story-report h2 { color: #f4f0e3; }
+    .link.story-report p { color: #c6c0ad; }
+    .link.story-report .note { color: #aacd73; }
+    .link.story-report:hover { background: #1f2b22; }
+
+    /* SUMMARY - Dark with green accents */
+    .link.summary {
+      background: #1a2218;
+      border-left-color: #aecd72;
+      color: #f4f0e3;
+    }
+    .link.summary h2 { color: #f4f0e3; }
+    .link.summary p { color: #c8c2af; }
+    .link.summary .note { color: #aecd72; }
+    .link.summary:hover { background: #1f281c; }
+
+    /* VISUAL_REPORT - Dark with multiple accent colors */
+    .link.visual-report {
+      background: #151e16;
+      border-left-color: #b8d66b;
+      color: #f2efdf;
+    }
+    .link.visual-report h2 { color: #f2efdf; }
+    .link.visual-report p { color: #c4c0ae; }
+    .link.visual-report .note { color: #b8d66b; }
+    .link.visual-report:hover { background: #1a2518; }
 
     .footer {
       margin-top: 48px;
@@ -96,6 +137,7 @@
       color: #6b6560;
       font-size: 0.9rem;
       font-style: italic;
+      text-align: center;
     }
 
     @media (max-width: 600px) {
@@ -116,26 +158,39 @@
     </p>
 
     <div class="links">
-      <a class="link" href="DIARY_STORY.html">
+      <a class="link diary-visual" href="DIARY_VISUAL.html">
+        <h2>Diary + Charts</h2>
+        <p>The same story in reverse chronological order, but with bar charts, pie charts, and stats
+        showing the scale of work done each day.</p>
+        <span class="note">New — Story with data visualizations</span>
+      </a>
+
+      <a class="link diary-story" href="DIARY_STORY.html">
         <h2>The Diary</h2>
-        <p>How it actually felt to spend a week fixing an old server. Less technical, more story. Written like a human wrote it.</p>
-        <span class="note">New — written for players, not developers</span>
+        <p>How it actually felt to spend a week fixing an old server. Less technical, more story.
+        Written in third person, narrating what he did with AI help.</p>
+        <span class="note">Story format — written like a human</span>
       </a>
 
-      <a class="link" href="STORY_REPORT.html">
+      <a class="link story-report" href="STORY_REPORT.html">
         <h2>Technical Diary</h2>
-        <p>The same week, but with repo names, commit counts, and the kind of detail that explains what actually got fixed.</p>
-        <span class="note">For people who want the technical side</span>
+        <p>The same week, but with repo names, commit counts, and the kind of detail that explains
+        what actually got fixed in each session.</p>
+        <span class="note">Timeline style — for technical readers</span>
       </a>
 
-      <a class="link" href="SUMMARY.html">
+      <a class="link summary" href="SUMMARY.html">
         <h2>Quick Summary</h2>
-        <p>Short version. What changed, why it mattered, what's still messy. One screen.</p>
+        <p>Short version. What changed, why it mattered, what's still messy. One screen overview
+        of the entire resurrection project.</p>
+        <span class="note">TL;DR — fastest read</span>
       </a>
 
-      <a class="link" href="VISUAL_REPORT.html">
+      <a class="link visual-report" href="VISUAL_REPORT.html">
         <h2>Numbers & Charts</h2>
-        <p>45 plugins, 453 commits, lots of charts. Best if you want to see the scale of the work.</p>
+        <p>45 plugins, 453 commits, lots of infographics. The full visual treatment with
+        detailed charts showing the scope of work.</p>
+        <span class="note">Visual style — maximum eye candy</span>
       </a>
     </div>
 
