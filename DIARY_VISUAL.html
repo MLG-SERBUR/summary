@@ -20,6 +20,23 @@
       --chart-3: #a04040;
     }
 
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f5f1e8;
+        --paper: #ffffff;
+        --paper-dark: #f5f1e8;
+        --ink: #2c2418;
+        --ink-light: #5a4e3c;
+        --accent: #8b7355;
+        --green: #4a6741;
+        --gold: #c4983a;
+        --red: #a04040;
+        --chart-1: #5a7a52;
+        --chart-2: #c4983a;
+        --chart-3: #a04040;
+      }
+    }
+
     * { box-sizing: border-box; margin:0; padding:0; }
 
     body {
@@ -310,10 +327,17 @@
 
     .footer-note {
       text-align: center;
-      color: rgba(255,255,255,0.4);
+      color: var(--ink-light);
       margin-top: 40px;
       font-style: italic;
       font-size: 0.95rem;
+      opacity: 0.6;
+    }
+
+    @media (prefers-color-scheme: light) {
+      .footer-note {
+        opacity: 0.8;
+      }
     }
 
     @media (max-width: 680px) {

@@ -22,6 +22,49 @@
       --max: 1180px;
     }
 
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f5f1e8;
+        --bg2: #ebe5d8;
+        --panel: rgba(255, 255, 255, 0.95);
+        --panel2: rgba(248, 245, 238, 0.95);
+        --line: rgba(44, 36, 24, 0.12);
+        --text: #2c2418;
+        --muted: #5a4e3c;
+        --gold: #c4983a;
+        --leaf: #4a6741;
+        --mint: #2a8a7e;
+        --rose: #a04040;
+        --shadow: 0 18px 48px rgba(0,0,0,0.12);
+      }
+
+      body {
+        background: var(--bg);
+      }
+
+      body::before {
+        background-image:
+          linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+      }
+
+      .hero {
+        background:
+          linear-gradient(135deg, rgba(0,0,0,0.04), transparent 34%),
+          linear-gradient(160deg, rgba(74,103,65,0.08), transparent 42%),
+          rgba(255, 255, 255, 0.95);
+      }
+
+      .hero::after {
+        background: radial-gradient(circle, rgba(196,152,58,0.18), transparent 66%);
+      }
+
+      .hero-note {
+        background: rgba(44, 36, 24, 0.08);
+        border: 1px solid rgba(0,0,0,0.08);
+      }
+    }
+
     * { box-sizing: border-box; }
     body {
       margin: 0;

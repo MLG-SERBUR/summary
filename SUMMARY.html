@@ -5,30 +5,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MLG Fortress Summary</title>
   <style>
+    :root {
+      --bg: linear-gradient(160deg, #101612 0%, #161d18 100%);
+      --text: #f4f0e3;
+      --box-bg: rgba(26, 34, 29, 0.95);
+      --box-border: rgba(211, 224, 184, 0.12);
+      --tag-text: #162117;
+      --tag-bg: linear-gradient(90deg, #aecd72, #d9ebaa);
+      --muted: #c8c2af;
+      --link: #aecd72;
+      --card-bg: rgba(255,255,255,0.04);
+      --card-border: rgba(255,255,255,0.08);
+      --big: #efbc64;
+      --shadow: 0 18px 48px rgba(0,0,0,0.25);
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: linear-gradient(160deg, #f5f1e8 0%, #ebe5d8 100%);
+        --text: #2c2418;
+        --box-bg: rgba(255, 255, 255, 0.95);
+        --box-border: rgba(44, 36, 24, 0.12);
+        --tag-text: #ffffff;
+        --tag-bg: linear-gradient(90deg, #4a6741, #5a7a52);
+        --muted: #5a4e3c;
+        --link: #4a6741;
+        --card-bg: rgba(0,0,0,0.04);
+        --card-border: rgba(0,0,0,0.08);
+        --big: #c4983a;
+        --shadow: 0 18px 48px rgba(0,0,0,0.12);
+      }
+    }
+
     body {
-      margin: 0;
-      background: linear-gradient(160deg, #101612 0%, #161d18 100%);
-      color: #f4f0e3;
+      margin:0;
+      background: var(--bg);
+      color: var(--text);
       font-family: "Trebuchet MS", "Gill Sans", sans-serif;
     }
     main {
       max-width: 980px;
-      margin: 0 auto;
+      margin:0 auto;
       padding: 42px 22px 64px;
     }
     .box {
-      background: rgba(26, 34, 29, 0.95);
-      border: 1px solid rgba(211, 224, 184, 0.12);
+      background: var(--box-bg);
+      border: 1px solid var(--box-border);
       border-radius: 24px;
       padding: 30px;
-      box-shadow: 0 18px 48px rgba(0,0,0,0.25);
+      box-shadow: var(--shadow);
     }
     .tag {
       display: inline-block;
       padding: 8px 12px;
       border-radius: 999px;
-      color: #162117;
-      background: linear-gradient(90deg, #aecd72, #d9ebaa);
+      color: var(--tag-text);
+      background: var(--tag-bg);
       font-size: 0.78rem;
       font-weight: 700;
       letter-spacing: 0.08em;
@@ -36,15 +68,15 @@
       margin-bottom: 14px;
     }
     h1 {
-      margin: 0;
+      margin:0;
       font-family: Georgia, "Times New Roman", serif;
       font-size: clamp(2.8rem, 7vw, 5rem);
       line-height: 0.95;
     }
-    p, li { color: #c8c2af; line-height: 1.65; }
+    p, li { color: var(--muted); line-height: 1.65; }
     h2 { font-family: Georgia, "Times New Roman", serif; margin-top: 28px; }
     ul { padding-left: 20px; }
-    a { color: #aecd72; }
+    a { color: var(--link); }
     .grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -52,15 +84,15 @@
       margin-top: 22px;
     }
     .card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
       border-radius: 18px;
       padding: 18px;
     }
     .big {
       font-family: Georgia, "Times New Roman", serif;
       font-size: 2rem;
-      color: #efbc64;
+      color: var(--big);
       margin-bottom: 6px;
     }
     @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } .box { padding: 22px; } }

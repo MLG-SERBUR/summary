@@ -5,12 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MLG Fortress - The Resurrection</title>
   <style>
+    :root {
+      --bg: #1a1f1c;
+      --text: #e8e0d0;
+      --heading: #f5f1e8;
+      --subtitle: #8b8578;
+      --intro: #b8b0a0;
+      --footer: #6b6560;
+      --border: #2a322c;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f5f1e8;
+        --text: #2c2418;
+        --heading: #1a1f1c;
+        --subtitle: #5a4e3c;
+        --intro: #4a4438;
+        --footer: #8b8578;
+        --border: #d0c8b8;
+      }
+    }
+
     * { box-sizing: border-box; margin:0; padding:0; }
 
     body {
       font-family: Georgia, "Times New Roman", serif;
-      background: #1a1f1c;
-      color: #e8e0d0;
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.6;
       min-height: 100vh;
     }
@@ -25,18 +47,18 @@
       font-size: 2.6rem;
       line-height: 1.2;
       margin-bottom: 8px;
-      color: #f5f1e8;
+      color: var(--heading);
     }
 
     .subtitle {
-      color: #8b8578;
+      color: var(--subtitle);
       font-size: 1.1rem;
       margin-bottom: 40px;
       font-style: italic;
     }
 
     .intro {
-      color: #b8b0a0;
+      color: var(--intro);
       margin-bottom: 48px;
       font-size: 1.05rem;
     }
@@ -86,6 +108,15 @@
     .link.diary-story .note { color: #8b7355; }
     .link.diary-story:hover { background: #e8e0d0; }
 
+    @media (prefers-color-scheme: light) {
+      .link.diary-story {
+        background: #ffffff;
+        border-left-color: #8b7355;
+        color: #2c2418;
+      }
+      .link.diary-story:hover { background: #f5f1e8; }
+    }
+
     /* DIARY_VISUAL - Paper style with chart colors */
     .link.diary-visual {
       background: #f5f1e8;
@@ -96,6 +127,15 @@
     .link.diary-visual p { color: #5a4e3c; }
     .link.diary-visual .note { color: #c4983a; }
     .link.diary-visual:hover { background: #e8e0d0; }
+
+    @media (prefers-color-scheme: light) {
+      .link.diary-visual {
+        background: #ffffff;
+        border-left-color: #4a6741;
+        color: #2c2418;
+      }
+      .link.diary-visual:hover { background: #f5f1e8; }
+    }
 
     /* STORY_REPORT - Dark green/mint theme */
     .link.story-report {
@@ -108,6 +148,18 @@
     .link.story-report .note { color: #aacd73; }
     .link.story-report:hover { background: #1f2b22; }
 
+    @media (prefers-color-scheme: light) {
+      .link.story-report {
+        background: #f0f7ee;
+        border-left-color: #4a6741;
+        color: #2c2418;
+      }
+      .link.story-report h2 { color: #2c2418; }
+      .link.story-report p { color: #5a4e3c; }
+      .link.story-report .note { color: #4a6741; }
+      .link.story-report:hover { background: #e5f0e2; }
+    }
+
     /* SUMMARY - Dark with green accents */
     .link.summary {
       background: #1a2218;
@@ -118,6 +170,18 @@
     .link.summary p { color: #c8c2af; }
     .link.summary .note { color: #aecd72; }
     .link.summary:hover { background: #1f281c; }
+
+    @media (prefers-color-scheme: light) {
+      .link.summary {
+        background: #f0f7ee;
+        border-left-color: #4a6741;
+        color: #2c2418;
+      }
+      .link.summary h2 { color: #2c2418; }
+      .link.summary p { color: #5a4e3c; }
+      .link.summary .note { color: #4a6741; }
+      .link.summary:hover { background: #e5f0e2; }
+    }
 
     /* VISUAL_REPORT - Dark with multiple accent colors */
     .link.visual-report {
@@ -130,11 +194,23 @@
     .link.visual-report .note { color: #b8d66b; }
     .link.visual-report:hover { background: #1a2518; }
 
+    @media (prefers-color-scheme: light) {
+      .link.visual-report {
+        background: #f0f7ee;
+        border-left-color: #4a6741;
+        color: #2c2418;
+      }
+      .link.visual-report h2 { color: #2c2418; }
+      .link.visual-report p { color: #5a4e3c; }
+      .link.visual-report .note { color: #4a6741; }
+      .link.visual-report:hover { background: #e5f0e2; }
+    }
+
     .footer {
       margin-top: 48px;
       padding-top: 24px;
-      border-top: 1px solid #2a322c;
-      color: #6b6560;
+      border-top: 1px solid var(--border);
+      color: var(--footer);
       font-size: 0.9rem;
       font-style: italic;
       text-align: center;
