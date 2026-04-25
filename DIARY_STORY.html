@@ -17,7 +17,7 @@
       --red: #a04040;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin:0; padding:0; }
 
     body {
       font-family: Georgia, "Times New Roman", serif;
@@ -187,89 +187,91 @@
 <body>
   <div class="book">
     <div class="cover">
-      <h1>The Week We Brought MLG Fortress Back</h1>
+      <h1>The Week He Brought MLG Fortress Back</h1>
       <div class="date">April 25–14, 2026 (newest first)</div>
       <div class="blurb">
-        I watched you spend a week bringing an 8-year-old Minecraft server back to life.
-        Here's how it looked from where I was sitting.
+        An 8-year-old Minecraft server sat untouched until this month. Here's what happened
+        when he decided to drag it into the modern era, usually with help from an AI.
       </div>
     </div>
 
     <div class="entry">
       <div class="entry-date">Saturday, April 25 (Morning)</div>
-      <h2>You Realized the Server Actually Feels Alive Again</h2>
+      <h2>The Server Actually Feels Alive Again</h2>
       <p>
-        You sat there Saturday morning looking at what you'd accomplished this week. Forty-five plugin repos
-        touched. Hundreds of commits. But the number that mattered to you was simpler: the server runs.
+        He sat there Saturday morning looking at what got done this week. Forty-five plugin repos
+        touched. Hundreds of commits. But the number that mattered was simpler: the server runs.
       </p>
       <p>
-        Your custom stuff works. The minigames are playable. The shop doesn't lie about item names anymore.
-        You told me an 8-year-old Minecraft server that could have just died quietly is now running on modern
-        software, keeping all its weird custom features, and actually working.
+        The custom stuff works. The minigames are playable. The shop doesn't lie about item names
+        anymore. He'd taken an 8-year-old Minecraft server that could have just died quietly and
+        got it running on modern software, keeping all its weird custom features, and actually working.
       </p>
       <p>
-        That's when I knew the resurrection part was basically done.
+        That's when the resurrection part was basically done.
       </p>
       <div class="ai-note">
-        <strong>What I saw:</strong> You went from "this server is a museum piece" to "people can actually
-        play on this" in about ten days. That's the win that mattered.
+        <strong>Observation:</strong> He went from "this server is a museum piece" to "people can
+        actually play on this" in about ten days. That was the win that mattered.
       </div>
     </div>
 
     <div class="entry">
       <div class="entry-date">Friday, April 24</div>
-      <h2>Multiverse-Core Reminded You That Build Tools Change Too</h2>
+      <h2>Multiverse-Core Reminded Him That Build Tools Change Too</h2>
       <p>
-        You opened Multiverse-Core — the plugin that handles multiple worlds on the server. It's a big one,
-        and you discovered it used to build with Maven but the project had switched to Gradle.
+        He opened Multiverse-Core — the plugin that handles multiple worlds on the server. It's a
+        big one, and he discovered it used to build with Maven but the project had switched to Gradle.
       </p>
       <p>
-        So you had to completely rework the updater workflow. It's not just updating a plugin anymore,
-        sometimes you have to update the way the plugin gets built. You spent the afternoon untangling that.
+        He asked an AI to completely rework the updater workflow. It wasn't just updating a plugin
+        anymore — sometimes you have to update the way the plugin gets built. He spent the afternoon
+        untangling that.
       </p>
       <p>
-        I watched you realize again that this isn't just "update plugin, done." It's more like
-        "update plugin, update build system, update CI, hope nothing breaks, fix what breaks."
+        Another reminder that this isn't just "update plugin, done." It's more like "update plugin,
+        update build system, update CI, hope nothing breaks, fix what breaks."
       </p>
       <div class="ai-note">
-        <strong>What I saw:</strong> You handled the build tool switch without getting frustrated. Just
-        another thing to fix, another layer to understand.
+        <strong>Observation:</strong> He handled the build tool switch without getting frustrated.
+        Just another thing to fix, another layer to understand.
       </div>
     </div>
 
     <div class="entry">
       <div class="entry-date">Thursday, April 23</div>
-      <h2>You Found Some Weird Files and Figured Out What They Actually Were</h2>
+      <h2>He Found Some Weird Files and Figured Out What They Were</h2>
       <p>
-        You found these strange image files in the server folder — world_biome.png, world_temperature.png,
-        stuff like that. For a second, you wondered if maybe they were part of some lost art project or
+        There were these strange image files in the server folder — world_biome.png, world_temperature.png,
+        stuff like that. For a second he wondered if maybe they were part of some lost art project or
         custom terrain thing.
       </p>
       <p>
-        Then you figured it out: they were just generated by Dynmap, the plugin that makes those web maps
-        of your world. Totally disposable. I watched you stop treating them like precious artifacts and
-        just recognize them for what they were: auto-generated clutter.
+        He asked an AI to investigate. Turns out they were just generated by Dynmap, the plugin that
+        makes those web maps of your world. Totally disposable. He stopped treating them like precious
+        artifacts and just recognized them for what they were: auto-generated clutter.
       </p>
       <div class="mess">
-        <strong>You realized:</strong> Old server folders are full of mysteries. Most of them are just
-        generated files from plugins you forgot you had.
+        <strong>Reality check:</strong> Old server folders are full of mysteries. Most of them are
+        just generated files from plugins you forgot you had.
       </div>
     </div>
 
     <div class="entry">
       <div class="entry-date">Wednesday, April 22</div>
-      <h2>The Shop Got One Last Fix, and You Simplified the Server Ping</h2>
+      <h2>The Shop Got One Last Fix, and He Simplified the Server Ping</h2>
       <p>
-        You fixed PrettySimpleShop one more time — it still wasn't using the actual shop item name in
-        every case. Then you made a bigger change to MountainDewritoes: it used to rely on something
-        called ServerListPlus to handle the server ping.
+        He had an AI fix PrettySimpleShop one more time — it still wasn't using the actual shop item
+        name in every case. Then he made a bigger change to MountainDewritoes: it used to rely on
+        something called ServerListPlus to handle the server ping.
       </p>
       <p>
-        You ripped ServerListPlus out and made MountainDewritoes handle the ping directly. Fewer layers,
-        less mystery, more control. I watched you feel good about deleting a plugin instead of adding one.
+        He ripped ServerListPlus out and made MountainDewritoes handle the ping directly. Fewer
+        layers, less mystery, more control. There's a good feeling that comes from deleting a plugin
+        instead of adding one.
       </p>
       <div class="ai-note">
-        <strong>What I saw:</strong> You're at the point now where you're removing dependencies instead
+        <strong>Observation:</strong> He's at the point now where he's removing dependencies instead
         of adding them. That's a good sign the architecture is stabilizing.
       </div>
     </div>
@@ -278,37 +280,37 @@
       <div class="entry-date">Tuesday, April 21</div>
       <h2>CreativeParkour and the Rest Started Actually Working</h2>
       <p>
-        You took on CreativeParkour — one of those classic MLG Fortress minigames. The plugin was so old
-        it barely compiled. You removed old build workflows, cleaned up the Maven setup, and got it
-        working with the modern server API.
+        He took on CreativeParkour — one of those classic MLG Fortress minigames. The plugin was so
+        old it barely compiled. He had an AI remove old build workflows, clean up the Maven setup,
+        and get it working with the modern server API.
       </p>
       <p>
-        By evening, you found and fixed a small crash bug in MountainDewritoes. I noticed the shift:
-        the big compatibility gaps were closed, so now you were finding the little bugs that only show
+        By evening, he found and fixed a small crash bug in MountainDewritoes. The shift was noticeable:
+        the big compatibility gaps were closed, so now he was finding the little bugs that only show
         up when players actually try to do things.
       </p>
       <div class="player-note">
-        For players: CreativeParkour is that parkour minigame you probably played at some point. You
-        fixed it so it won't break when the server updates.
+        For players: CreativeParkour is that parkour minigame you probably played at some point.
+        He fixed it so it won't break when the server updates.
       </div>
     </div>
 
     <div class="entry">
       <div class="entry-date">Monday, April 20 (Evening)</div>
-      <h2>You Had to Choose Between "Clean" and "Works" Again</h2>
+      <h2>He Had to Choose Between "Clean" and "Works" Again</h2>
       <p>
-        Remember the player data changes from April 14? You had to undo part of it. The "clean" design
-        you thought was so smart was making the main plugin file huge and hard to work with. So you
+        Remember the player data changes from April 14? He had to undo part of it. The "clean" design
+        he thought was so smart was making the main plugin file huge and hard to work with. So he
         brought back the wrapper approach.
       </p>
       <p>
-        You also fixed startup compatibility and trimmed down some config stuff. The plugin needed to
-        load cleanly, and you told me all the fancy architecture in the world doesn't matter if the
+        He also fixed startup compatibility and trimmed down some config stuff. The plugin needed to
+        load cleanly, and he knew all the fancy architecture in the world doesn't matter if the
         server crashes on startup.
       </p>
       <p>
-        I watched you accept that this is the kind of thing that happens a lot in this work. You try
-        something, it's elegant, then reality hits and you make it ugly but functional.
+        This is the kind of thing that happens a lot in this work. You try something, it's elegant,
+        then reality hits and you make it ugly but functional.
       </p>
     </div>
 
@@ -316,18 +318,18 @@
       <div class="entry-date">Monday, April 20 (Morning)</div>
       <h2>ItemNameLab Became Actually Useful</h2>
       <p>
-        You created a test plugin called ItemNameLab. Sounds boring, right? But you explained it to me:
-        with so many plugins needing to know item names (shops, GUIs, displays, etc.), you needed a
-        way to test if the name logic worked everywhere.
+        He had an AI create a test plugin called ItemNameLab. Sounds boring, right? But the logic
+        was sound: with so many plugins needing to know item names (shops, GUIs, displays, etc.),
+        he needed a way to test if the name logic worked everywhere.
       </p>
       <p>
-        You added tests for custom names, translated names, all that. The point wasn't to build a fancy
-        tool. The point was to make sure that when you fixed item names in one plugin, they'd stay fixed
-        in all of them.
+        He added tests for custom names, translated names, all that. The point wasn't to build a
+        fancy tool. The point was to make sure that when he fixed item names in one plugin, they'd
+        stay fixed in all of them.
       </p>
       <div class="ai-note">
-        <strong>What I saw:</strong> You building a testing tool so you wouldn't have to manually
-        check every plugin when you changed the name logic. Smart.
+        <strong>Observation:</strong> He built a testing tool so he wouldn't have to manually
+        check every plugin when he changed the name logic. Smart.
       </div>
     </div>
 
@@ -335,23 +337,23 @@
       <div class="entry-date">Sunday, April 19</div>
       <h2>PrettySimpleShop Could Finally Tell What Items Were</h2>
       <p>
-        You told me about this bug: PrettySimpleShop (the shop plugin where players buy and sell stuff)
+        There was this bug: PrettySimpleShop (the shop plugin where players buy and sell stuff)
         couldn't correctly identify what an item was called. Like, you'd try to sell a diamond sword
         and the shop would call it something weird or wrong.
       </p>
       <p>
-        You spent the afternoon fixing the item name fallback chain. Basically, the shop now knows:
-        "Is this a custom named item? Okay, use that name. No? Is it a translated name? Use that.
-        Still no? Then use the default Minecraft name." Simple in concept, annoying in practice.
+        He spent the afternoon having an AI fix the item name fallback chain. Basically, the shop
+        now knows: "Is this a custom named item? Okay, use that name. No? Is it a translated name?
+        Use that. Still no? Then use the default Minecraft name." Simple in concept, annoying in practice.
       </p>
       <p>
-        When you finally got it working, you logged into the test server and bought something just to
-        make sure the shop signs showed the right names. They did. I watched you feel good about that.
+        When it was finally working, he logged into the test server and bought something just to
+        make sure the shop signs showed the right names. They did. That felt good.
       </p>
       <div class="tag-list">
         <span class="tag">PrettySimpleShop</span>
         <span class="tag">item names fixed</span>
-        <span class="tag">you tested it yourself</span>
+        <span class="tag">tested it himself</span>
       </div>
     </div>
 
@@ -359,12 +361,12 @@
       <div class="entry-date">Thursday-Saturday, April 17-18</div>
       <h2>Everything Started Moving at Once</h2>
       <p>
-        This was your turning point. Instead of fixing one plugin at a time, you started powering
+        This was the turning point. Instead of fixing one plugin at a time, he started powering
         through the whole collection. There were like 45 plugin repos that needed attention — some
         hadn't been touched in years.
       </p>
       <p>
-        Your routine became: open a plugin, update it to work with modern Minecraft (Paper/Purpur 26.1.2),
+        The routine became: open a plugin, update it to work with modern Minecraft (Paper/Purpur 26.1.2),
         fix the build system, remove old workflows, add new ones. Repeat. Over and over. Forty-five times.
       </p>
       <p>
@@ -372,8 +374,8 @@
         More importantly, stuff was <span class="highlight">actually working</span> on the modern server software.
       </p>
       <div class="ai-note">
-        <strong>What I saw:</strong> You got into a rhythm. Open, update, fix, commit, next. The
-        momentum was building and you could feel the server coming back to life.
+        <strong>Observation:</strong> He got into a rhythm. Open, update, fix, commit, next.
+        The momentum was building and the server was coming back to life.
       </div>
       <div class="tag-list">
         <span class="tag">45 plugins</span>
@@ -386,21 +388,21 @@
       <div class="entry-date">Tuesday, April 15</div>
       <h2>The Build System Fought Back</h2>
       <p>
-        You spent the morning fighting with build tools. You told me it was like when you try to update
-        something on your computer and suddenly nothing works. The plugins wouldn't compile because the
-        Java version was wrong, then Maven (the build tool) was being loud and cranky.
+        He spent the morning fighting with build tools. It was like when you try to update something
+        on your computer and suddenly nothing works. The plugins wouldn't compile because the Java
+        version was wrong, then Maven (the build tool) was being loud and cranky.
       </p>
       <p>
-        You eventually got Java 21 working properly and fixed a bunch of repository URLs that pointed
-        to nowhere. You also had to switch the updater script back on — the thing that checks for new
+        He eventually got Java 21 working properly and fixed a bunch of repository URLs that pointed
+        to nowhere. He also had to switch the updater script back on — the thing that checks for new
         versions.
       </p>
       <p>
-        I watched you spend an entire day just fixing plumbing and having nothing to show for it in-game.
-        But you understood: if it's not done, none of the fun stuff works.
+        He spent an entire day just fixing plumbing and had nothing to show for it in-game.
+        But he understood: if it's not done, none of the fun stuff works.
       </p>
       <div class="mess">
-        <strong>You told me:</strong> Players never see this work. But if it's not done, none of
+        <strong>The reality:</strong> Players never see this work. But if it's not done, none of
         the fun stuff works. It's like fixing the pipes in a house — boring but necessary.
       </div>
     </div>
@@ -409,19 +411,19 @@
       <div class="entry-date">Monday, April 14</div>
       <h2>MountainDewritoes Was a Mess</h2>
       <p>
-        You opened up the server's custom plugin folder and honestly, you told me it was overwhelming.
-        MountainDewritoes — yeah, that's really what you called it — had grown into this massive beast
+        He opened up the server's custom plugin folder and honestly, it was overwhelming.
+        MountainDewritoes — yeah, that's really what he called it — had grown into this massive beast
         over the years. It handled player data, server tricks, and a bunch of stuff that made MLG
         Fortress feel like MLG Fortress.
       </p>
       <p>
         The first problem? It depended on something called GrandioseAPI, which sounded fancy but was
-        really just making everything more complicated. So you ripped it out. Player data got moved to
-        something simpler. But then you realized the main plugin file was getting huge, so you had to
-        bring back a small wrapper to keep things readable.
+        really just making everything more complicated. So he had an AI rip it out. Player data got
+        moved to something simpler. But then he realized the main plugin file was getting huge, so
+        he had to bring back a small wrapper to keep things readable.
       </p>
       <p>
-        I watched you have one of those days where every fix created a new problem. Classic.
+        It was one of those days where every fix created a new problem. Classic.
       </p>
       <div class="player-note">
         For players: This plugin is why your player data doesn't vanish when you update the server.
@@ -430,7 +432,7 @@
     </div>
 
     <div class="footer-note">
-      I watched you spend a week fighting with old plugins so your players don't have to.<br>
+      He spent a week fighting with old plugins so his players don't have to.<br>
       MLG Fortress server resurrection: April 14–25, 2026.
     </div>
   </div>
