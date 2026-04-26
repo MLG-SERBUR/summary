@@ -20,8 +20,23 @@
       --chart-3: #a04040;
     }
 
+    :root[data-theme="light"] {
+      --bg: #f5f1e8;
+      --paper: #ffffff;
+      --paper-dark: #f5f1e8;
+      --ink: #2c2418;
+      --ink-light: #5a4e3c;
+      --accent: #8b7355;
+      --green: #4a6741;
+      --gold: #c4983a;
+      --red: #a04040;
+      --chart-1: #5a7a52;
+      --chart-2: #c4983a;
+      --chart-3: #a04040;
+    }
+
     @media (prefers-color-scheme: light) {
-      :root {
+      :root:not([data-theme="dark"]) {
         --bg: #f5f1e8;
         --paper: #ffffff;
         --paper-dark: #f5f1e8;
@@ -35,6 +50,26 @@
         --chart-2: #c4983a;
         --chart-3: #a04040;
       }
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--paper);
+      border: 1px solid var(--accent);
+      color: var(--ink);
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .theme-toggle:hover {
+      background: var(--paper-dark);
+      transform: scale(1.05);
     }
 
     * { box-sizing: border-box; margin:0; padding:0; }
@@ -379,6 +414,7 @@
   </style>
 </head>
 <body>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙 Dark</button>
   <div class="book">
     <div class="cover">
       <h1>The Week He Brought MLG Fortress Back</h1>
@@ -822,5 +858,29 @@
       MLG Fortress server resurrection: April 14–25, 2026.
     </div>
   </div>
+
+  <script>
+    const toggle = document.getElementById('themeToggle');
+    const root = document.documentElement;
+
+    function getPreferredTheme() {
+      const saved = localStorage.getItem('theme');
+      if (saved) return saved;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    function applyTheme(theme) {
+      root.setAttribute('data-theme', theme);
+      toggle.textContent = theme === 'dark' ? '☀️ Light' : '🌙 Dark';
+      localStorage.setItem('theme', theme);
+    }
+
+    toggle.addEventListener('click', () => {
+      const current = root.getAttribute('data-theme');
+      applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
+
+    applyTheme(getPreferredTheme());
+  </script>
 </body>
 </html>
