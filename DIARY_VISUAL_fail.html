@@ -7,27 +7,17 @@
   <style>
     :root {
       --bg: #0f1411;
-      --paper: #1a1f1b;
-      --paper-dark: #151a16;
-      --ink: #e8e0d0;
-      --ink-light: #a09888;
+      --paper: #f5f1e8;
+      --paper-dark: #e8e0d0;
+      --ink: #2c2418;
+      --ink-light: #5a4e3c;
       --accent: #8b7355;
-      --green: #6a9a60;
-      --gold: #d4a84a;
-      --red: #c05050;
-      --chart-1: #6a9a60;
-      --chart-2: #d4a84a;
-      --chart-3: #c05050;
-      --overlay: rgba(139, 115, 85, 0.15);
-      --overlay-strong: rgba(139, 115, 85, 0.25);
-      --track-bg: rgba(255,255,255,0.08);
-      --shadow: rgba(0,0,0,0.4);
-      --shadow-strong: rgba(0,0,0,0.6);
-      --border-light: rgba(255,255,255,0.1);
-      --green-overlay: rgba(106, 154, 96, 0.15);
-      --gold-overlay: rgba(212, 168, 74, 0.15);
-      --gold-highlight: rgba(212, 168, 74, 0.2);
-      --red-overlay: rgba(192, 80, 80, 0.15);
+      --green: #4a6741;
+      --gold: #c4983a;
+      --red: #a04040;
+      --chart-1: #5a7a52;
+      --chart-2: #c4983a;
+      --chart-3: #a04040;
     }
 
     :root[data-theme="light"] {
@@ -43,16 +33,6 @@
       --chart-1: #5a7a52;
       --chart-2: #c4983a;
       --chart-3: #a04040;
-      --overlay: rgba(139, 115, 85, 0.08);
-      --overlay-strong: rgba(139, 115, 85, 0.15);
-      --track-bg: rgba(0,0,0,0.08);
-      --shadow: rgba(0,0,0,0.25);
-      --shadow-strong: rgba(0,0,0,0.4);
-      --border-light: rgba(0,0,0,0.1);
-      --green-overlay: rgba(74, 103, 65, 0.1);
-      --gold-overlay: rgba(196, 152, 58, 0.08);
-      --gold-highlight: rgba(196, 152, 58, 0.15);
-      --red-overlay: rgba(160, 64, 64, 0.1);
     }
 
     @media (prefers-color-scheme: light) {
@@ -69,16 +49,6 @@
         --chart-1: #5a7a52;
         --chart-2: #c4983a;
         --chart-3: #a04040;
-        --overlay: rgba(139, 115, 85, 0.08);
-        --overlay-strong: rgba(139, 115, 85, 0.15);
-        --track-bg: rgba(0,0,0,0.08);
-        --shadow: rgba(0,0,0,0.25);
-        --shadow-strong: rgba(0,0,0,0.4);
-        --border-light: rgba(0,0,0,0.1);
-        --green-overlay: rgba(74, 103, 65, 0.1);
-        --gold-overlay: rgba(196, 152, 58, 0.08);
-        --gold-highlight: rgba(196, 152, 58, 0.15);
-        --red-overlay: rgba(160, 64, 64, 0.1);
       }
     }
 
@@ -117,7 +87,7 @@
       padding: 20px;
       background: var(--paper);
       border-radius: 8px;
-      box-shadow: 0 20px 60px var(--shadow-strong);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
     }
 
     .cover {
@@ -125,8 +95,8 @@
       border-radius: 8px;
       padding: 60px 40px;
       text-align: center;
-      box-shadow: 0 20px 60px var(--shadow-strong);
-      border: 1px solid var(--border-light);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+      border: 1px solid rgba(0,0,0,0.1);
       margin-bottom: 40px;
     }
 
@@ -155,7 +125,7 @@
       border-radius: 4px;
       padding: 40px;
       margin-bottom: 24px;
-      box-shadow: 0 8px 32px var(--shadow);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
       border-left: 4px solid var(--accent);
       position: relative;
     }
@@ -198,8 +168,8 @@
     }
 
     .chart-box {
-      background: var(--overlay);
-      border: 1px solid var(--overlay-strong);
+      background: rgba(139, 115, 85, 0.08);
+      border: 1px solid rgba(139, 115, 85, 0.2);
       border-radius: 8px;
       padding: 24px;
       margin: 24px 0;
@@ -231,7 +201,7 @@
 
     .bar-track {
       height: 24px;
-      background: var(--track-bg);
+      background: rgba(0,0,0,0.08);
       border-radius: 12px;
       overflow: hidden;
     }
@@ -292,8 +262,8 @@
     }
 
     .stat-box {
-      background: var(--overlay);
-      border: 1px solid var(--overlay-strong);
+      background: rgba(139, 115, 85, 0.1);
+      border: 1px solid rgba(139, 115, 85, 0.2);
       border-radius: 8px;
       padding: 16px;
       text-align: center;
@@ -319,7 +289,7 @@
 
     .timeline-bar {
       height: 40px;
-      background: var(--green-overlay);
+      background: rgba(90, 122, 82, 0.2);
       border-radius: 8px;
       position: relative;
       margin: 8px 0;
@@ -348,13 +318,13 @@
     }
 
     .highlight {
-      background: var(--gold-highlight);
+      background: rgba(196, 152, 58, 0.15);
       padding: 2px 6px;
       border-radius: 3px;
     }
 
     .player-note {
-      background: var(--green-overlay);
+      background: rgba(74, 103, 65, 0.1);
       border-left: 3px solid var(--green);
       padding: 16px 20px;
       margin: 20px 0;
@@ -363,8 +333,8 @@
     }
 
     .ai-note {
-      background: var(--gold-overlay);
-      border: 1px solid var(--overlay-strong);
+      background: rgba(196, 152, 58, 0.08);
+      border: 1px solid rgba(196, 152, 58, 0.2);
       padding: 16px 20px;
       margin: 20px 0;
       color: var(--ink-light);
@@ -381,11 +351,11 @@
       gap: 8px;
       margin-top: 16px;
       padding-top: 16px;
-      border-top: 1px solid var(--border-light);
+      border-top: 1px solid rgba(0,0,0,0.1);
     }
 
     .tag {
-      background: var(--overlay-strong);
+      background: rgba(139, 115, 85, 0.15);
       color: var(--accent);
       padding: 4px 12px;
       border-radius: 12px;
@@ -870,16 +840,16 @@
 
       <div class="chart-box">
         <div class="chart-title">Player Data Storage</div>
-         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 12px;">
-           <div style="text-align: center; padding: 12px; background: var(--red-overlay); border-radius: 8px;">
-             <div style="font-weight: bold; color: var(--red); margin-bottom: 8px;">Before</div>
-             <div style="font-size: 0.85rem; color: var(--ink-light);">GrandioseAPI<br/>grandPlayers/UUID files</div>
-           </div>
-           <div style="text-align: center; padding: 12px; background: var(--green-overlay); border-radius: 8px;">
-             <div style="font-weight: bold; color: var(--green); margin-bottom: 8px;">After</div>
-             <div style="font-size: 0.85rem; color: var(--ink-light);">PDC API<br/>Built into Minecraft</div>
-           </div>
-         </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 12px;">
+          <div style="text-align: center; padding: 12px; background: rgba(160,64,64,0.1); border-radius: 8px;">
+            <div style="font-weight: bold; color: var(--red); margin-bottom: 8px;">Before</div>
+            <div style="font-size: 0.85rem; color: var(--ink-light);">GrandioseAPI<br/>grandPlayers/UUID files</div>
+          </div>
+          <div style="text-align: center; padding: 12px; background: rgba(74,103,65,0.1); border-radius: 8px;">
+            <div style="font-weight: bold; color: var(--green); margin-bottom: 8px;">After</div>
+            <div style="font-size: 0.85rem; color: var(--ink-light);">PDC API<br/>Built into Minecraft</div>
+          </div>
+        </div>
       </div>
     </div>
 
