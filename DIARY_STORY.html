@@ -168,29 +168,6 @@
       font-family: "Trebuchet MS", sans-serif;
     }
 
-    .diff-stats {
-      display: inline-flex;
-      gap: 12px;
-      margin-left: 12px;
-      font-size: 0.85rem;
-      font-family: "Trebuchet MS", sans-serif;
-    }
-
-    .diff-add {
-      color: var(--green);
-      font-weight: bold;
-    }
-
-    .diff-del {
-      color: var(--red);
-      font-weight: bold;
-    }
-
-    .diff-total {
-      color: var(--ink-light);
-      font-weight: bold;
-    }
-
     .ai-note {
       background: rgba(196, 152, 58, 0.08);
       border: 1px solid rgba(196, 152, 58, 0.2);
@@ -239,29 +216,8 @@
       </div>
     </div>
 
-    <div style="background: rgba(139, 115, 85, 0.08); border: 1px solid rgba(139, 115, 85, 0.2); border-radius: 8px; padding: 24px; margin: 24px 0;">
-      <div style="font-weight: bold; margin-bottom: 16px; color: var(--ink); font-size: 1.1rem;">Week Totals (Estimated)</div>
-      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 20px 0;">
-        <div style="background: rgba(139, 115, 85, 0.1); border: 1px solid rgba(139, 115, 85, 0.2); border-radius: 8px; padding: 16px; text-align: center;">
-          <div style="font-size: 2rem; font-weight: bold; color: var(--gold); line-height: 1; margin-bottom: 8px;">453</div>
-          <div style="font-size: 0.85rem; color: var(--ink-light);">Commits</div>
-        </div>
-        <div style="background: rgba(74, 103, 65, 0.1); border: 1px solid rgba(74, 103, 65, 0.2); border-radius: 8px; padding: 16px; text-align: center;">
-          <div style="font-size: 2rem; font-weight: bold; color: var(--green); line-height: 1; margin-bottom: 8px;">+~16,400</div>
-          <div style="font-size: 0.85rem; color: var(--ink-light);">Lines added</div>
-        </div>
-        <div style="background: rgba(160, 64, 64, 0.1); border: 1px solid rgba(160, 64, 64, 0.2); border-radius: 8px; padding: 16px; text-align: center;">
-          <div style="font-size: 2rem; font-weight: bold; color: var(--red); line-height: 1; margin-bottom: 8px;">-~14,200</div>
-          <div style="font-size: 0.85rem; color: var(--ink-light);">Lines deleted</div>
-        </div>
-      </div>
-      <div style="text-align: center; margin-top: 12px; font-size: 0.9rem; color: var(--ink-light);">
-        45 plugin repos touched across 12 days of work
-      </div>
-    </div>
-
     <div class="entry">
-      <div class="entry-date">Saturday, April 25 (Morning) <span class="diff-stats"><span class="diff-total">~50 commits</span> <span class="diff-add">+~2,100</span> <span class="diff-del">-~1,800</span></span></div>
+      <div class="entry-date">Saturday, April 25 (Morning)</div>
       <h2>The Server Actually Feels Alive Again</h2>
       <p>
         He sat there Saturday morning looking at what got done this week. Forty-five plugin repos
@@ -282,7 +238,7 @@
     </div>
 
     <div class="entry">
-      <div class="entry-date">Friday, April 24 <span class="diff-stats"><span class="diff-total">~42 commits</span> <span class="diff-add">+~1,900</span> <span class="diff-del">-~1,600</span></span></div>
+      <div class="entry-date">Friday, April 24</div>
       <h2>Multiverse-Core Reminded Him That Build Tools Change Too</h2>
       <p>
         He opened Multiverse-Core — the plugin that handles multiple worlds on the server. It's a
@@ -304,7 +260,7 @@
     </div>
 
     <div class="entry">
-      <div class="entry-date">Thursday, April 23 <span class="diff-stats"><span class="diff-total">~33 commits</span> <span class="diff-add">+~1,200</span> <span class="diff-del">-~1,100</span></span></div>
+      <div class="entry-date">Thursday, April 23</div>
       <h2>He Found Some Weird Files and Figured Out What They Were</h2>
       <p>
         There were these strange image files in the server folder — world_biome.png, world_temperature.png,
@@ -323,7 +279,7 @@
     </div>
 
     <div class="entry">
-      <div class="entry-date">Wednesday, April 22 <span class="diff-stats"><span class="diff-total">~54 commits</span> <span class="diff-add">+~2,400</span> <span class="diff-del">-~2,100</span></span></div>
+      <div class="entry-date">Wednesday, April 22</div>
       <h2>The Shop Got One Last Fix, and He Simplified the Server Ping</h2>
       <p>
         He had an AI fix PrettySimpleShop one more time — it still wasn't using the actual shop item
@@ -342,7 +298,7 @@
     </div>
 
     <div class="entry">
-      <div class="entry-date">Tuesday, April 21 <span class="diff-stats"><span class="diff-total">~39 commits</span> <span class="diff-add">+~1,800</span> <span class="diff-del">-~1,500</span></span></div>
+      <div class="entry-date">Tuesday, April 21</div>
       <h2>CreativeParkour and the Rest Started Actually Working</h2>
       <p>
         He took on CreativeParkour — one of those classic MLG Fortress minigames. The plugin was so
@@ -361,7 +317,7 @@
     </div>
 
     <div class="entry">
-      <div class="entry-date">Monday, April 20 (Evening) <span class="diff-stats"><span class="diff-total">~30 commits</span> <span class="diff-add">+~1,200</span> <span class="diff-del">-~1,000</span></span></div>
+      <div class="entry-date">Monday, April 20 (Evening)</div>
       <h2>He Had to Choose Between "Clean" and "Works" Again</h2>
       <p>
         Remember the player data changes from April 14? He had to undo part of it. The "clean" design
@@ -380,7 +336,7 @@
     </div>
 
     <div class="entry">
-      <div class="entry-date">Monday, April 20 (Morning) <span class="diff-stats"><span class="diff-total">~30 commits</span> <span class="diff-add">+~1,300</span> <span class="diff-del">-~1,100</span></span></div>
+      <div class="entry-date">Monday, April 20 (Morning)</div>
       <h2>ItemNameLab Became Actually Useful</h2>
       <p>
         He had an AI create a test plugin called ItemNameLab. Sounds boring, right? But the logic
@@ -399,7 +355,7 @@
     </div>
 
     <div class="entry">
-      <div class="entry-date">Sunday, April 19 <span class="diff-stats"><span class="diff-total">~30 commits</span> <span class="diff-add">+~1,100</span> <span class="diff-del">-~900</span></span></div>
+      <div class="entry-date">Sunday, April 19</div>
       <h2>PrettySimpleShop Could Finally Tell What Items Were</h2>
       <p>
         There was this bug: PrettySimpleShop (the shop plugin where players buy and sell stuff)
@@ -423,7 +379,7 @@
     </div>
 
     <div class="entry">
-      <div class="entry-date">Thursday-Saturday, April 17-18 <span class="diff-stats"><span class="diff-total">~57 commits</span> <span class="diff-add">+~2,500</span> <span class="diff-del">-~2,200</span></span></div>
+      <div class="entry-date">Thursday-Saturday, April 17-18</div>
       <h2>Everything Started Moving at Once</h2>
       <p>
         This was the turning point. Instead of fixing one plugin at a time, he started powering
@@ -450,7 +406,7 @@
     </div>
 
     <div class="entry">
-      <div class="entry-date">Tuesday, April 15 <span class="diff-stats"><span class="diff-total">~27 commits</span> <span class="diff-add">+~1,000</span> <span class="diff-del">-~900</span></span></div>
+      <div class="entry-date">Tuesday, April 15</div>
       <h2>The Build System Fought Back</h2>
       <p>
         He spent the morning fighting with build tools. It was like when you try to update something
@@ -473,7 +429,7 @@
     </div>
 
     <div class="entry">
-      <div class="entry-date">Monday, April 14 <span class="diff-stats"><span class="diff-total">~24 commits</span> <span class="diff-add">+~900</span> <span class="diff-del">-~800</span></span></div>
+      <div class="entry-date">Monday, April 14</div>
       <h2>GrandioseAPI Got Replaced With Something Simpler</h2>
       <p>
         He opened up the server's custom plugin folder and honestly, it was overwhelming.
