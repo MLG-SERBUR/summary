@@ -30,33 +30,8 @@
       --red-overlay: rgba(192, 80, 80, 0.15);
     }
 
-    :root[data-theme="light"] {
-      --bg: #f5f1e8;
-      --paper: #ffffff;
-      --paper-dark: #f5f1e8;
-      --ink: #2c2418;
-      --ink-light: #5a4e3c;
-      --accent: #8b7355;
-      --green: #4a6741;
-      --gold: #c4983a;
-      --red: #a04040;
-      --chart-1: #5a7a52;
-      --chart-2: #c4983a;
-      --chart-3: #a04040;
-      --overlay: rgba(139, 115, 85, 0.08);
-      --overlay-strong: rgba(139, 115, 85, 0.15);
-      --track-bg: rgba(0,0,0,0.08);
-      --shadow: rgba(0,0,0,0.25);
-      --shadow-strong: rgba(0,0,0,0.4);
-      --border-light: rgba(0,0,0,0.1);
-      --green-overlay: rgba(74, 103, 65, 0.1);
-      --gold-overlay: rgba(196, 152, 58, 0.08);
-      --gold-highlight: rgba(196, 152, 58, 0.15);
-      --red-overlay: rgba(160, 64, 64, 0.1);
-    }
-
     @media (prefers-color-scheme: light) {
-      :root:not([data-theme="dark"]) {
+      :root {
         --bg: #f5f1e8;
         --paper: #ffffff;
         --paper-dark: #f5f1e8;
@@ -82,6 +57,58 @@
       }
     }
 
+    :root[data-theme="light"] {
+      --bg: #f5f1e8;
+      --paper: #ffffff;
+      --paper-dark: #f5f1e8;
+      --ink: #2c2418;
+      --ink-light: #5a4e3c;
+      --accent: #8b7355;
+      --green: #4a6741;
+      --gold: #c4983a;
+      --red: #a04040;
+      --chart-1: #5a7a52;
+      --chart-2: #c4983a;
+      --chart-3: #a04040;
+      --overlay: rgba(139, 115, 85, 0.08);
+      --overlay-strong: rgba(139, 115, 85, 0.15);
+      --track-bg: rgba(0,0,0,0.08);
+      --shadow: rgba(0,0,0,0.25);
+      --shadow-strong: rgba(0,0,0,0.4);
+      --border-light: rgba(0,0,0,0.1);
+      --green-overlay: rgba(74, 103, 65, 0.1);
+      --gold-overlay: rgba(196, 152, 58, 0.08);
+      --gold-highlight: rgba(196, 152, 58, 0.15);
+      --red-overlay: rgba(160, 64, 64, 0.1);
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #0f1411;
+      --paper: #1a1f1b;
+      --paper-dark: #151a16;
+      --ink: #e8e0d0;
+      --ink-light: #a09888;
+      --accent: #8b7355;
+      --green: #6a9a60;
+      --gold: #d4a84a;
+      --red: #c05050;
+      --chart-1: #6a9a60;
+      --chart-2: #d4a84a;
+      --chart-3: #c05050;
+      --overlay: rgba(139, 115, 85, 0.15);
+      --overlay-strong: rgba(139, 115, 85, 0.25);
+      --track-bg: rgba(255,255,255,0.08);
+      --shadow: rgba(0,0,0,0.4);
+      --shadow-strong: rgba(0,0,0,0.6);
+      --border-light: rgba(255,255,255,0.1);
+      --green-overlay: rgba(106, 154, 96, 0.15);
+      --gold-overlay: rgba(212, 168, 74, 0.15);
+      --gold-highlight: rgba(212, 168, 74, 0.2);
+      --red-overlay: rgba(192, 80, 80, 0.15);
+    }
+
+    * { box-sizing: border-box; margin:0; padding:0; }
+
     .theme-toggle {
       position: fixed;
       top: 20px;
@@ -101,8 +128,6 @@
       background: var(--paper-dark);
       transform: scale(1.05);
     }
-
-    * { box-sizing: border-box; margin:0; padding:0; }
 
     body {
       font-family: Georgia, "Times New Roman", serif;
@@ -893,9 +918,7 @@
     const toggle = document.getElementById('themeToggle');
     const root = document.documentElement;
 
-    function getPreferredTheme() {
-      const saved = localStorage.getItem('theme');
-      if (saved) return saved;
+    function getSystemTheme() {
       return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
 
@@ -905,12 +928,28 @@
       localStorage.setItem('theme', theme);
     }
 
+    function initTheme() {
+      const saved = localStorage.getItem('theme');
+      if (saved) {
+        applyTheme(saved);
+      } else {
+        const systemTheme = getSystemTheme();
+        toggle.textContent = systemTheme === 'dark' ? '☀️ Light' : '🌙 Dark';
+      }
+    }
+
     toggle.addEventListener('click', () => {
-      const current = root.getAttribute('data-theme');
+      const current = root.getAttribute('data-theme') || getSystemTheme();
       applyTheme(current === 'dark' ? 'light' : 'dark');
     });
 
-    applyTheme(getPreferredTheme());
+    initTheme();
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      if (!localStorage.getItem('theme')) {
+        toggle.textContent = e.matches ? '☀️ Light' : '🌙 Dark';
+      }
+    });
   </script>
 </body>
 </html>
