@@ -537,36 +537,53 @@
     </div>
 
     <div class="chart-box">
-      <div class="chart-title">Server Resurrection Timeline</div>
-      <div style="padding: 16px 0;">
-        <div style="display: flex; justify-content: space-between; align-items: center; position: relative; margin-bottom: 12px;">
-          <div style="position: absolute; top: 50%; left: 0; right: 0; height: 4px; background: var(--track-bg); border-radius: 2px; z-index: 1;"></div>
-          <div style="position: absolute; top: 50%; left: 0; width: 95%; height: 4px; background: var(--chart-1); border-radius: 2px; z-index: 2;"></div>
+      <div class="chart-title">Restoration Timeline — What Players Got Back</div>
+      <div style="position: relative; padding: 20px 0;">
+        <div style="position: absolute; left: 20px; top: 20px; bottom: 20px; width: 3px; background: var(--track-bg);"></div>
 
-          <div style="display: flex; flex-direction: column; align-items: center; z-index: 3;">
-            <div style="width: 40px; height: 40px; background: var(--red-overlay); border: 2px solid var(--red); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">💀</div>
-            <div style="font-size: 0.75rem; color: var(--ink-light); margin-top: 6px; text-align: center;">Apr 14<br/><span style="color: var(--red);">1 ❤️</span></div>
-          </div>
-
-          <div style="display: flex; flex-direction: column; align-items: center; z-index: 3;">
-            <div style="width: 40px; height: 40px; background: var(--gold-overlay); border: 2px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">🔧</div>
-            <div style="font-size: 0.75rem; color: var(--ink-light); margin-top: 6px; text-align: center;">Apr 17<br/><span style="color: var(--gold);">5 ❤️</span></div>
-          </div>
-
-          <div style="display: flex; flex-direction: column; align-items: center; z-index: 3;">
-            <div style="width: 40px; height: 40px; background: var(--gold-overlay); border: 2px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">🎮</div>
-            <div style="font-size: 0.75rem; color: var(--ink-light); margin-top: 6px; text-align: center;">Apr 21<br/><span style="color: var(--gold);">7 ❤️</span></div>
-          </div>
-
-          <div style="display: flex; flex-direction: column; align-items: center; z-index: 3;">
-            <div style="width: 40px; height: 40px; background: var(--green-overlay); border: 2px solid var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">✨</div>
-            <div style="font-size: 0.75rem; color: var(--ink-light); margin-top: 6px; text-align: center;">Apr 25<br/><span style="color: var(--green);">10 ❤️</span></div>
+        <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px; position: relative;">
+          <div style="width: 40px; height: 40px; background: var(--red-overlay); border: 2px solid var(--red); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.1rem; z-index: 2;">⚠️</div>
+          <div style="flex: 1; padding-top: 8px;">
+            <div style="font-size: 0.75rem; color: var(--red); font-weight: bold; margin-bottom: 2px;">APR 14-15</div>
+            <div style="font-size: 0.9rem; color: var(--ink); font-weight: bold;">Server offline, plugins broken</div>
+            <div style="font-size: 0.8rem; color: var(--ink-light); margin-top: 2px;">45 plugins need fixing, Java 8 → 21 migration</div>
           </div>
         </div>
 
-        <div style="margin-top: 20px; padding: 12px 16px; background: var(--overlay); border-radius: 8px; font-size: 0.85rem; color: var(--ink-light);">
-          <strong style="color: var(--ink);">For Minecraft players:</strong> The server went from 💀 dead (1 heart) to ✨ fully alive (10 hearts). 
-          Each ❤️ represents plugins working, minigames playable, and features restored.
+        <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px; position: relative;">
+          <div style="width: 40px; height: 40px; background: var(--gold-overlay); border: 2px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.1rem; z-index: 2;">🛠️</div>
+          <div style="flex: 1; padding-top: 8px;">
+            <div style="font-size: 0.75rem; color: var(--gold); font-weight: bold; margin-bottom: 2px;">APR 17-19</div>
+            <div style="font-size: 0.9rem; color: var(--ink); font-weight: bold;">Core systems restored</div>
+            <div style="font-size: 0.8rem; color: var(--ink-light); margin-top: 2px;">Build tools fixed, 40+ plugins compiling again</div>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px; position: relative;">
+          <div style="width: 40px; height: 40px; background: var(--gold-overlay); border: 2px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.1rem; z-index: 2;">🏃</div>
+          <div style="flex: 1; padding-top: 8px;">
+            <div style="font-size: 0.75rem; color: var(--gold); font-weight: bold; margin-bottom: 2px;">APR 21</div>
+            <div style="font-size: 0.9rem; color: var(--ink); font-weight: bold;">Minigames playable</div>
+            <div style="font-size: 0.8rem; color: var(--ink-light); margin-top: 2px;">CreativeParkour and other minigames working</div>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px; position: relative;">
+          <div style="width: 40px; height: 40px; background: var(--green-overlay); border: 2px solid var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.1rem; z-index: 2;">🛒</div>
+          <div style="flex: 1; padding-top: 8px;">
+            <div style="font-size: 0.75rem; color: var(--green); font-weight: bold; margin-bottom: 2px;">APR 22-24</div>
+            <div style="font-size: 0.9rem; color: var(--ink); font-weight: bold;">Shop & features fixed</div>
+            <div style="font-size: 0.8rem; color: var(--ink-light); margin-top: 2px;">PrettySimpleShop working, item names correct, pings simplified</div>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: flex-start; gap: 16px; position: relative;">
+          <div style="width: 40px; height: 40px; background: var(--green-overlay); border: 2px solid var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.1rem; z-index: 2;">✅</div>
+          <div style="flex: 1; padding-top: 8px;">
+            <div style="font-size: 0.75rem; color: var(--green); font-weight: bold; margin-bottom: 2px;">APR 25</div>
+            <div style="font-size: 0.9rem; color: var(--ink); font-weight: bold;">Server fully alive</div>
+            <div style="font-size: 0.8rem; color: var(--ink-light); margin-top: 2px;">All custom features working, ready for players</div>
+          </div>
         </div>
       </div>
     </div>
